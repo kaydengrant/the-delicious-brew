@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .content-container {
+    @apply w-full px-8 lg:w-[1000px] lg:px-0 flex flex-col;
+  }
+
+  .clickable {
+    @apply cursor-pointer transition-all select-none hover:scale-110 active:brightness-125;
+  }
+}
+
+html {
+  @apply bg-white scroll-smooth;
+}
+
+body {
+  @apply flex flex-col justify-center min-w-full items-center text-black overflow-x-hidden;
+}
+
+section {
+  @apply my-5;
+}
+
+h1 {
+  @apply font-bold text-6xl text-black leading-10;
+}
+
+h2 {
+  @apply font-semibold text-4xl text-black;
+}
+
+h3 {
+  @apply font-semibold text-2xl text-black;
+}
+
+h4 {
+  @apply font-semibold text-xl;
+}
+
+p {
+  @apply font-normal text-base leading-7;
+}
+
+li {
+  @apply mx-2 my-1.5;
+}
