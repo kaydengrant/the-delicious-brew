@@ -4,7 +4,7 @@
 
 @layer components {
   .content-container {
-    @apply w-full px-8 lg:w-[1000px] lg:px-0 flex flex-col;
+    @apply w-full px-8 pt-16 lg:w-[1000px] lg:px-0 flex flex-col;
   }
 
   .clickable {
@@ -25,7 +25,7 @@ section {
 }
 
 h1 {
-  @apply font-bold text-6xl text-black leading-10;
+  @apply font-bold text-6xl text-black leading-[4rem];
 }
 
 h2 {
