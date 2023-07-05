@@ -1,26 +1,25 @@
 const schema = {
-  name: 'product',
-  title: 'Product',
+  name: 'titleBanner',
+  title: 'Title Banner',
   type: 'document',
   fields: [
     {
       name: 'image',
       title: 'Image',
-      type: 'array',
-      of: [{ type: 'image' }],
+      type: 'image',
       options: {
         hotspot: true,
       },
     },
     {
-      name: 'name',
-      title: 'Name',
+      name: 'title',
+      title: 'Title',
       type: 'string',
     },
     {
-      name: 'price',
-      title: 'Price',
-      type: 'number',
+      name: 'subTitle',
+      title: 'Sub Title',
+      type: 'string',
     },
     {
       name: 'details',
