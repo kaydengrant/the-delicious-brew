@@ -1,6 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import { FaCoffee, FaMugHot } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+
 import OutlineButton from './OutlineButton';
 
 const ShopFooter: React.FC = () => {
@@ -18,44 +19,44 @@ const ShopFooter: React.FC = () => {
         <nav className="flex flex-row">
           <ul className="flex flex-col">
             <li className="clickable">
-              <Link to="/shop">
+              <Link href="/shop">
                 <h4>SHOP</h4>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/espresso">
+              <Link href="/shop/espresso">
                 <p>Espresso</p>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/drip">
+              <Link href="/shop/drip">
                 <p>Drip</p>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/pourover">
+              <Link href="/shop/pourover">
                 <p>Pour Over</p>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/press">
+              <Link href="/shop/press">
                 <p>Press</p>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/beans">
+              <Link href="/shop/beans">
                 <p>Beans</p>
               </Link>
             </li>
             <li className="clickable">
-              <Link to="/shop/accessories">
+              <Link href="/shop/accessories">
                 <p>Additional Tools & Accessories</p>
               </Link>
             </li>
           </ul>
           <ul className="flex flex-col">
             <li className="clickable">
-              <Link to="/about">
+              <Link href="/about">
                 <p>About Delicious Brew</p>
               </Link>
             </li>

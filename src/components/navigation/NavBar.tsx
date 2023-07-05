@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { FaCoffee } from 'react-icons/fa';
 import { GrSearch, GrCart } from 'react-icons/gr';
-import { NavLink, Link } from 'react-router-dom';
 
 import ShopNav from './ShopNav';
+import NavLink from './NavLink';
 import BlogNav from './BlogNav';
 
 const NavBar: React.FC = () => {
@@ -12,7 +13,7 @@ const NavBar: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center w-screen bg-white z-50">
+      <div className="absolute left-0 top-0 flex flex-col items-center w-screen bg-white z-50">
         <nav className="flex flex-row w-full lg:w-[1000px] justify-between px-4">
           <div className="flex flex-row items-center gap-8">
             <FaCoffee size={50} />
@@ -22,12 +23,7 @@ const NavBar: React.FC = () => {
                   setShopHover(false), setBlogHover(false);
                 }}
               >
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? 'underline underline-offset-4' : 'none'
-                  }
-                >
+                <NavLink href="/" exact>
                   <h4>HOME</h4>
                 </NavLink>
               </li>
@@ -36,12 +32,7 @@ const NavBar: React.FC = () => {
                   setShopHover(true), setBlogHover(false);
                 }}
               >
-                <NavLink
-                  to="/shop"
-                  className={({ isActive }) =>
-                    isActive ? 'underline underline-offset-4' : 'none'
-                  }
-                >
+                <NavLink href="/shop">
                   <h4>SHOP</h4>
                 </NavLink>
               </li>
@@ -50,12 +41,7 @@ const NavBar: React.FC = () => {
                   setShopHover(false), setBlogHover(true);
                 }}
               >
-                <NavLink
-                  to="/blog"
-                  className={({ isActive }) =>
-                    isActive ? 'underline underline-offset-4' : 'none'
-                  }
-                >
+                <NavLink href="/blog">
                   <h4>BLOG</h4>
                 </NavLink>
               </li>
@@ -76,7 +62,10 @@ const NavBar: React.FC = () => {
                 setShopHover(false), setBlogHover(false);
               }}
             >
-              <Link to="/cart" className="clickable flex flex-col items-center">
+              <Link
+                href="/cart"
+                className="clickable flex flex-col items-center"
+              >
                 <GrCart size={25} />
                 <p>Cart</p>
               </Link>
@@ -84,9 +73,12 @@ const NavBar: React.FC = () => {
           </ul>
         </nav>
         <div className="bg-gray w-screen h-0.5" />
+        {shopHover && <ShopNav status={setShopHover} />}
+        {blogHover && <BlogNav status={setBlogHover} />}
       </div>
-      {shopHover && <ShopNav status={setShopHover} />}
-      {blogHover && <BlogNav status={setBlogHover} />}
+      {(shopHover || blogHover) && (
+        <div className="absolute inset-0 opacity-90 z-10 bg-black " />
+      )}
     </>
   );
 };

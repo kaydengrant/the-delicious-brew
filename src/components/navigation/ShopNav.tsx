@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { FaMugHot } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
-import { Link, Outlet } from 'react-router-dom';
 
 import OutlineButton from '../OutlineButton';
 
@@ -14,80 +14,76 @@ const ShopNav: React.FC<Props> = ({ status }) => {
   const [links, setLinks] = useState([categories[0]]);
 
   return (
-    <>
-      <div className="absolute inset-0 opacity-60 z-10 bg-black " />
-      <div
-        onMouseLeave={() => status(false)}
-        className="flex flex-row justify-center w-screen z-50 bg-white"
-      >
-        <nav className="flex flex-col z-50  w-full lg:w-[1000px] py-6">
-          <ul className="flex flex-row justify-between">
-            <li>
-              <Link to="/shop">
-                <h4 className="clickable italic font-normal underline underline-offset-4">
-                  Shop All
-                </h4>
-              </Link>
-            </li>
-            <li
-              onClick={() => status(false)}
-              className="clickable flex flex-col items-center"
-            >
-              <GrClose size={25} />
-              <p>Close</p>
-            </li>
-          </ul>
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-row">
-              <ul className="flex flex-col">
-                {categories.map((category, index) => (
-                  <li
-                    key={category.key}
-                    onClick={() => {
-                      setLinks([categories[index]]), setCurrentIndex(index);
-                    }}
-                    className={`clickable flex px-4 py-1 ${
-                      currentIndex == index ? 'bg-gray font-bold' : 'bg-white'
-                    } rounded  `}
-                  >
-                    {category.name}
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col">
-                {links.map((category) => (
-                  <div key={category.key}>
-                    {category.links.map((link) => (
-                      <li
-                        key={link.key}
-                        onClick={() => status(false)}
-                        className="clickable hover:scale-100"
-                      >
-                        <Link to={link.to}>{link.name}</Link>
-                      </li>
-                    ))}
-                  </div>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-row gap-8">
-              <div className="bg-gray w-0.5 h-full" />
-              <ul className="flex flex-col text-right">
-                <li className="clickable">
-                  <p>About Delicious Brew</p>
+    <div
+      onMouseLeave={() => status(false)}
+      className="flex flex-row justify-center w-screen z-50 bg-white"
+    >
+      <nav className="flex flex-col z-50 w-full lg:w-[1000px] py-6">
+        <ul className="flex flex-row justify-between">
+          <li onClick={() => status(false)}>
+            <Link href="/shop">
+              <h4 className="clickable italic font-normal underline underline-offset-4">
+                Shop All
+              </h4>
+            </Link>
+          </li>
+          <li
+            onClick={() => status(false)}
+            className="clickable flex flex-col items-center"
+          >
+            <GrClose size={25} />
+            <p>Close</p>
+          </li>
+        </ul>
+        <div className="flex flex-row justify-between">
+          <div className="flex flex-row">
+            <ul className="flex flex-col">
+              {categories.map((category, index) => (
+                <li
+                  key={category.key}
+                  onClick={() => {
+                    setLinks([categories[index]]), setCurrentIndex(index);
+                  }}
+                  className={`clickable flex px-4 py-1 ${
+                    currentIndex == index ? 'bg-gray font-bold' : 'bg-white'
+                  } rounded  `}
+                >
+                  {category.name}
                 </li>
-                <li>
-                  <Link to="/about">
-                    <OutlineButton text="Buy me a Coffee" Icon={FaMugHot} />
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+            <ul className="flex flex-col">
+              {links.map((category) => (
+                <div key={category.key}>
+                  {category.links.map((link) => (
+                    <li
+                      key={link.key}
+                      onClick={() => status(false)}
+                      className="clickable hover:scale-100"
+                    >
+                      <Link href={link.to}>{link.name}</Link>
+                    </li>
+                  ))}
+                </div>
+              ))}
+            </ul>
           </div>
-        </nav>
-        <Outlet />
-      </div>
-    </>
+          <div className="flex flex-row gap-8">
+            <div className="bg-gray w-0.5 h-full" />
+            <ul className="flex flex-col text-right">
+              <li className="clickable">
+                <p>About Delicious Brew</p>
+              </li>
+              <li>
+                <Link href="/about">
+                  <OutlineButton text="Buy me a Coffee" Icon={FaMugHot} />
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 };
 
