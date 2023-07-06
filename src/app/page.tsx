@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { client } from '../../sanity/lib/client';
-import { NavBar, Footer, TitleBanner, ShopFooter } from '../components';
+import { NavBar, Footer, TitleBanner, NavFooter } from '../components';
 
 const getData = async () => {
   const query = '*[_type == "titleBanner"]';
@@ -20,25 +20,19 @@ const Home = async () => {
     <>
       <NavBar />
       <div className="content-container">
-        <section>
-          <TitleBanner
-            data={
-              bannerData.props.banners.length && bannerData.props.banners[0]
-            }
-            direction="left"
-            link="shop"
-            color="bg-green"
-          />
-          <TitleBanner
-            data={
-              bannerData.props.banners.length && bannerData.props.banners[1]
-            }
-            direction="right"
-            link="blog"
-            color="bg-brown"
-          />
-        </section>
-        <ShopFooter />
+        <TitleBanner
+          data={bannerData.props.banners.length && bannerData.props.banners[0]}
+          direction="left"
+          link="shop"
+          color="bg-green"
+        />
+        <TitleBanner
+          data={bannerData.props.banners.length && bannerData.props.banners[1]}
+          direction="right"
+          link="blog"
+          color="bg-brown"
+        />
+        <NavFooter />
         <Footer />
       </div>
     </>

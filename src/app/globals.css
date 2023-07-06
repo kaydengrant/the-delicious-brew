@@ -4,7 +4,7 @@
 
 @layer components {
   .content-container {
-    @apply w-full px-8 pt-16 lg:w-[1000px] lg:px-0 flex flex-col;
+    @apply w-full px-8 pt-[7.5rem] lg:w-[1000px] lg:px-0 flex flex-col;
   }
 
   .clickable {
