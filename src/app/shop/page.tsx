@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import { Footer, NavBar, ShopFooter } from '../../components';
+import { Footer, NavBar, NavFooter } from '../../components';
 
 const Shop: React.FC = async () => {
   return (
@@ -11,7 +11,7 @@ const Shop: React.FC = async () => {
         <section>
           <h1>Shop here</h1>
         </section>
-        <ShopFooter />
+        <NavFooter />
         <Footer />
       </div>
     </>

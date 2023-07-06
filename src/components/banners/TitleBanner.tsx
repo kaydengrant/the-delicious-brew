@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ImArrowRight2 } from 'react-icons/im';
 
 import { urlForImage } from '../../../sanity/lib/client';
-import OutlineButton from '../OutlineButton';
+import { OutlineButton } from '../../components';
 
 type Props = {
   data: {

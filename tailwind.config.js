@@ -18,6 +18,7 @@ module.exports = {
         errorRed: '#FF3333',
       },
       screens: {
+        sm: '640px',
         md: '768px',
         lg: '1024px',
       },
