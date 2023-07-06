@@ -25,32 +25,37 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
   return (
     <section
       className={`flex ${
-        direction === 'left' ? 'flex-row' : 'flex-row-reverse'
-      } justify-between items-center gap-6 ${color} rounded-2xl`}
+        direction === 'left'
+          ? 'flex-col-reverse lg:flex-row'
+          : 'flex-col lg:flex-row-reverse'
+      } justify-center lg:justify-between items-center gap-6 ${color} rounded-2xl p-6`}
     >
       <div
-        className={`flex flex-col max-w-[45%] ${
-          direction === 'left' ? 'text-right' : 'text-left'
+        className={`flex flex-col lg:max-w-[45%] ${
+          direction === 'left'
+            ? 'text-center lg:text-right'
+            : 'text-center lg:text-left'
         } gap-2`}
       >
         <h4>{data.subTitle}</h4>
         <h1>{data.title}</h1>
         <div
           className={`flex flex-row ${
-            direction === 'left' ? 'justify-end' : 'justify-start'
+            direction === 'left'
+              ? 'justify-center lg:justify-end'
+              : 'justify-center lg:justify-start'
           }`}
         >
-          {link ? (
-            link === 'shop' ? (
-              <Link href="/shop">
-                <OutlineButton text={`Visit Shop`} Icon={ImArrowRight2} />
-              </Link>
-            ) : (
-              <Link href="/blog">
-                <OutlineButton text={`Visit Blog`} Icon={ImArrowRight2} />
-              </Link>
-            )
-          ) : undefined}
+          {link === 'shop' && (
+            <Link href="/shop">
+              <OutlineButton text={`Visit Shop`} Icon={ImArrowRight2} />
+            </Link>
+          )}
+          {link === 'blog' && (
+            <Link href="/blog">
+              <OutlineButton text={`Visit Blog`} Icon={ImArrowRight2} />
+            </Link>
+          )}
         </div>
       </div>
       <Image
@@ -59,7 +64,7 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
         width={500}
         height={500}
         alt="image"
-        className="m-6 border-4 border-white rounded-xl"
+        className="border-4 border-white rounded-xl"
         unoptimized
       />
     </section>
