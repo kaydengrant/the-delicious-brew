@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FaCoffee } from 'react-icons/fa';
-import { GrSearch, GrCart } from 'react-icons/gr';
+import { GrSearch, GrCart, GrMenu } from 'react-icons/gr';
 
-import ShopNav from './ShopNav';
-import NavLink from './NavLink';
-import BlogNav from './BlogNav';
+import { NavShop, NavLink, NavBlog, NavMobile } from '../../components';
 
 const NavBar: React.FC = () => {
-  const [shopHover, setShopHover] = useState(false);
-  const [blogHover, setBlogHover] = useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
+  const [blogOpen, setBlogOpen] = useState(false);
 
   return (
     <>
-      <div className="absolute left-0 top-0 flex flex-col items-center w-screen bg-white z-50">
-        <nav className="flex flex-row w-full lg:w-[1000px] justify-between px-4">
+      <div className="absolute left-0 top-0 flex flex-col items-center w-screen bg-white z-40">
+        <nav className="flex flex-row w-full lg:w-[1000px] justify-between items-center p-4">
           <div className="flex flex-row items-center gap-8">
-            <FaCoffee size={50} />
-            <ul className="flex flex-row items-center gap-4">
+            <Link href="/">
+              <FaCoffee size={50} />
+            </Link>
+            <ul className="hidden md:flex flex-row items-center gap-4">
               <li
                 onMouseEnter={() => {
-                  setShopHover(false), setBlogHover(false);
+                  setShopOpen(false), setBlogOpen(false);
                 }}
               >
                 <NavLink href="/" exact>
@@ -29,7 +30,7 @@ const NavBar: React.FC = () => {
               </li>
               <li
                 onMouseEnter={() => {
-                  setShopHover(true), setBlogHover(false);
+                  setShopOpen(true), setBlogOpen(false);
                 }}
               >
                 <NavLink href="/shop">
@@ -38,7 +39,7 @@ const NavBar: React.FC = () => {
               </li>
               <li
                 onMouseEnter={() => {
-                  setShopHover(false), setBlogHover(true);
+                  setShopOpen(false), setBlogOpen(true);
                 }}
               >
                 <NavLink href="/blog">
@@ -50,7 +51,7 @@ const NavBar: React.FC = () => {
           <ul className="flex flex-row items-center gap-4">
             <li
               onMouseEnter={() => {
-                setShopHover(false), setBlogHover(false);
+                setShopOpen(false), setBlogOpen(false);
               }}
               className="clickable flex flex-col items-center"
             >
@@ -59,7 +60,7 @@ const NavBar: React.FC = () => {
             </li>
             <li
               onMouseEnter={() => {
-                setShopHover(false), setBlogHover(false);
+                setShopOpen(false), setBlogOpen(false);
               }}
             >
               <Link
@@ -70,13 +71,24 @@ const NavBar: React.FC = () => {
                 <p>Cart</p>
               </Link>
             </li>
+            <li
+              onMouseEnter={() => {
+                setShopOpen(false), setBlogOpen(false);
+              }}
+              onClick={() => setHamburgerOpen(true)}
+              className="md:hidden clickable flex flex-col items-center"
+            >
+              <GrMenu size={25} />
+              <p>Menu</p>
+            </li>
           </ul>
         </nav>
         <div className="bg-gray w-screen h-0.5" />
-        {shopHover && <ShopNav status={setShopHover} />}
-        {blogHover && <BlogNav status={setBlogHover} />}
+        {shopOpen && !hamburgerOpen && <NavShop status={setShopOpen} />}
+        {blogOpen && !hamburgerOpen && <NavBlog status={setBlogOpen} />}
       </div>
-      {(shopHover || blogHover) && (
+      {hamburgerOpen && <NavMobile status={setHamburgerOpen} />}
+      {(shopOpen || blogOpen) && (
         <div className="absolute inset-0 opacity-90 z-10 bg-black " />
       )}
     </>

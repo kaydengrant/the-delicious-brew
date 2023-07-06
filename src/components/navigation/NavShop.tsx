@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { FaMugHot } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
 
-import OutlineButton from '../OutlineButton';
+import { OutlineButton } from '../../components';
 
 type Props = {
   status: React.Dispatch<React.SetStateAction<boolean>>;
@@ -48,7 +48,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
                     currentIndex == index ? 'bg-gray font-bold' : 'bg-white'
                   } rounded  `}
                 >
-                  {category.name}
+                  {category.title}
                 </li>
               ))}
             </ul>
@@ -61,7 +61,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
                       onClick={() => status(false)}
                       className="clickable hover:scale-100"
                     >
-                      <Link href={link.to}>{link.name}</Link>
+                      <Link href={link.to}>{link.title}</Link>
                     </li>
                   ))}
                 </div>
@@ -87,90 +87,96 @@ const ShopNav: React.FC<Props> = ({ status }) => {
   );
 };
 
-const categories = [
+export const categories = [
   {
     key: 1,
-    name: 'Espresso',
+    name: 'espresso',
+    title: 'Espresso',
     links: [
-      { key: 10, name: 'All Espresso', to: '/shop/espresso' },
-      { key: 11, name: 'Machines', to: '/shop/espresso/machines' },
+      { key: 10, title: 'All Espresso', to: '/shop/espresso' },
+      { key: 11, title: 'Machines', to: '/shop/espresso/machines' },
       {
         key: 12,
-        name: 'Additional Tools & Accessories',
+        title: 'Additional Tools & Accessories',
         to: '/shop/espresso/accessories',
       },
-      { key: 13, name: 'Recommended Beans', to: '/shop/espresso/beans' },
+      { key: 13, title: 'Recommended Beans', to: '/shop/espresso/beans' },
     ],
   },
   {
     key: 2,
-    name: 'Drip',
+    name: 'drip',
+    title: 'Drip',
     links: [
-      { key: 20, name: 'All Drip', to: '/shop/drip' },
-      { key: 21, name: 'Machines', to: '/shop/drip/machines' },
+      { key: 20, title: 'All Drip', to: '/shop/drip' },
+      { key: 21, title: 'Machines', to: '/shop/drip/machines' },
       {
         key: 22,
-        name: 'Accessories',
+        title: 'Accessories',
         to: '/shop/drip/accessories',
       },
-      { key: 23, name: 'Recommended Beans', to: '/shop/drip/beans' },
+      { key: 23, title: 'Recommended Beans', to: '/shop/drip/beans' },
     ],
   },
   {
     key: 3,
-    name: 'Pour Over',
+    name: 'pourover',
+    title: 'Pour Over',
     links: [
-      { key: 30, name: 'All Pour Over', to: '/shop/pourover' },
-      { key: 31, name: 'Brewers', to: '/shop/pourover/brewers' },
+      { key: 30, title: 'All Pour Over', to: '/shop/pourover' },
+      { key: 31, title: 'Brewers', to: '/shop/pourover/brewers' },
       {
         key: 32,
-        name: 'Additional Tools & Accessories',
+        title: 'Additional Tools & Accessories',
         to: '/shop/pourover/accessories',
       },
-      { key: 33, name: 'Recommended Beans', to: '/shop/pourover/beans' },
+      { key: 33, title: 'Recommended Beans', to: '/shop/pourover/beans' },
     ],
   },
   {
     key: 4,
-    name: 'Press',
+    name: 'press',
+    title: 'Press',
     links: [
-      { key: 40, name: 'All Press', to: '/shop/press' },
-      { key: 41, name: 'Brewers', to: '/shop/press/brewers' },
+      { key: 40, title: 'All Press', to: '/shop/press' },
+      { key: 41, title: 'Brewers', to: '/shop/press/brewers' },
       {
         key: 42,
-        name: 'Additional Tools & Accessories',
+        title: 'Additional Tools & Accessories',
         to: '/shop/press/accessories',
       },
-      { key: 43, name: 'Recommended Beans', to: '/shop/press/beans' },
+      { key: 43, title: 'Recommended Beans', to: '/shop/press/beans' },
     ],
   },
   {
     key: 5,
-    name: 'Beans',
+    name: 'beans',
+    title: 'Beans',
     links: [
-      { key: 50, name: 'All Beans', to: '/shop/beans' },
-      { key: 51, name: 'Whole Beans', to: '/shop/beans/whole' },
-      { key: 52, name: 'Pre-Ground Beans', to: '/shop/beans/ground' },
+      { key: 50, title: 'All Beans', to: '/shop/beans' },
+      { key: 51, title: 'Whole Beans', to: '/shop/beans/whole' },
+      { key: 52, title: 'Pre-Ground Beans', to: '/shop/beans/ground' },
     ],
   },
   {
     key: 6,
-    name: 'Additional Tools & Accessories',
+    name: 'accessories',
+    title: 'Additional Tools & Accessories',
     links: [
-      { key: 60, name: 'All Accessories', to: '/shop/accessories' },
-      { key: 61, name: 'Grinders', to: '/shop/accessories/grinders' },
-      { key: 62, name: 'Cleaning Supplies', to: '/shop/accessories/cleaning' },
-      { key: 63, name: 'Filters', to: '/shop/accessories/filters' },
+      { key: 60, title: 'All Accessories', to: '/shop/accessories' },
+      { key: 61, title: 'Grinders', to: '/shop/accessories/grinders' },
+      { key: 62, title: 'Cleaning Supplies', to: '/shop/accessories/cleaning' },
+      { key: 63, title: 'Filters', to: '/shop/accessories/filters' },
       {
         key: 64,
-        name: 'Espresso Accessories',
+        title: 'Espresso Accessories',
         to: '/shop/accessories/espresso',
       },
-      { key: 65, name: 'Kettles', to: '/shop/accessories/kettles' },
-      { key: 66, name: 'Cups & Mugs', to: '/shop/accessories/cups' },
+      { key: 65, title: 'Kettles', to: '/shop/accessories/kettles' },
+      { key: 66, title: 'Cups & Mugs', to: '/shop/accessories/cups' },
       {
         key: 67,
-        name: 'Scales & Measuring',
+        title: 'Scales & Measuring',
         to: '/shop/accessories/measuring',
       },
     ],
