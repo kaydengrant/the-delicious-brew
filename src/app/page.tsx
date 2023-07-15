@@ -2,32 +2,35 @@
 import React from 'react';
 
 import { client } from '../../sanity/lib/client';
-import { NavBar, Footer, TitleBanner, NavFooter } from '../components';
+import { NavBar, Footer, TitleBanner, NavFooter, Divider } from '../components';
 
-const getData = async () => {
-  const query = '*[_type == "titleBanner"]';
-  const banners = await client.fetch(query);
+const getSanityData = async () => {
+  const bannerQuery = '*[_type == "titleBanner" && page == "home"]';
+  const dividerQuery = '*[_type == "divider" && name == "testerimage"]';
+  const banners = await client.fetch(bannerQuery);
+  const divider = await client.fetch(dividerQuery);
 
   return {
-    props: { banners },
+    props: { banners, divider },
   };
 };
 
 const Home = async () => {
-  const bannerData = await getData();
+  const sanityData = await getSanityData();
 
   return (
     <>
       <NavBar />
       <div className="content-container">
         <TitleBanner
-          data={bannerData.props.banners.length && bannerData.props.banners[0]}
+          data={sanityData.props.banners.length && sanityData.props.banners[0]}
           direction="left"
           link="shop"
           color="bg-green"
         />
+        <Divider data={sanityData.props.divider[0]} />
         <TitleBanner
-          data={bannerData.props.banners.length && bannerData.props.banners[1]}
+          data={sanityData.props.banners.length && sanityData.props.banners[1]}
           direction="right"
           link="blog"
           color="bg-brown"
