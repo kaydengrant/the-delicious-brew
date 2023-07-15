@@ -6,10 +6,10 @@ import { OutlineButton } from '../../components';
 
 const NavFooter: React.FC = () => {
   return (
-    <section className="flex flex-col justify-center w-full mb-0">
+    <>
       <div className="bg-gray h-0.5" />
-      <section className="mb-0">
-        <div className="flex flex-col lg:flex-row justify-between px-2 py-4 gap-4 lg:gap-0">
+      <section className="flex flex-col justify-center w-full">
+        <div className="flex flex-col lg:flex-row justify-between px-2 gap-4 lg:gap-0">
           <div className="flex flex-col gap-2 px-2 lg:px-0">
             <div className="flex flex-row items-center gap-6">
               <FaCoffee size={50} />
@@ -70,7 +70,7 @@ const NavFooter: React.FC = () => {
           </nav>
         </div>
       </section>
-    </section>
+    </>
   );
 };
 
