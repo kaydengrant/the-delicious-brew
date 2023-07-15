@@ -35,6 +35,11 @@ const schema = {
         maxLength: 90,
       },
     },
+    {
+      name: 'page',
+      title: 'Page',
+      type: 'string',
+    },
   ],
 };
 

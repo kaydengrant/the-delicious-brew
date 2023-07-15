@@ -20,15 +20,15 @@ type Props = {
 };
 
 const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
-  const img = urlForImage(data.image).width(500).url();
+  const img = urlForImage(data.image).width(1400).url();
 
   return (
     <section
       className={`flex ${
         direction === 'left'
-          ? 'flex-col-reverse lg:flex-row'
-          : 'flex-col lg:flex-row-reverse'
-      } justify-center lg:justify-between items-center gap-6 ${color} rounded-2xl p-6`}
+          ? 'flex-col-reverse md:flex-row'
+          : 'flex-col-reverse md:flex-row-reverse'
+      } justify-center lg:justify-between items-center gap-6 ${color} rounded-2xl p-6 drop-shadow-md`}
     >
       <div
         className={`flex flex-col lg:max-w-[45%] ${
@@ -38,7 +38,7 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
         } gap-2`}
       >
         <h4>{data.subTitle}</h4>
-        <h1>{data.title}</h1>
+        <h1 className="hidden sm:flex">{data.title}</h1>
         <div
           className={`flex flex-row ${
             direction === 'left'
@@ -58,15 +58,16 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
           )}
         </div>
       </div>
-      <Image
-        loader={() => img}
-        src={img}
-        width={500}
-        height={500}
-        alt="image"
-        className="border-4 border-white rounded-xl"
-        unoptimized
-      />
+      <div className="w-full min-h-[250px] md:h-full relative pt-[35%] ">
+        <Image
+          loader={() => img}
+          src={img}
+          alt="title banner image"
+          className="border-4 border-white rounded-xl object-cover"
+          fill
+          unoptimized
+        />
+      </div>
     </section>
   );
 };
