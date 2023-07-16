@@ -37,7 +37,7 @@ section {
 }
 
 h1 {
-  @apply font-bold lg:text-6xl text-4xl text-black lg:leading-[4rem];
+  @apply font-bold text-5xl text-black lg:leading-[3.5rem];
 }
 
 h2 {
