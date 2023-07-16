@@ -1,6 +1,6 @@
 const schema = {
-  name: 'titleBanner',
-  title: 'Title Banner',
+  name: 'banner',
+  title: 'Banner',
   type: 'document',
   fields: [
     {
@@ -19,11 +19,6 @@ const schema = {
     {
       name: 'subTitle',
       title: 'Sub Title',
-      type: 'string',
-    },
-    {
-      name: 'details',
-      title: 'Details',
       type: 'string',
     },
     {

@@ -62,7 +62,7 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
         <Image
           loader={() => img}
           src={img}
-          alt="title banner image"
+          alt="Title banner image"
           className="border-4 border-white rounded-xl object-cover"
           fill
           unoptimized

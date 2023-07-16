@@ -10,3 +10,4 @@ export { default as NavFooter } from './navigation/NavFooter';
 export { default as NavLink } from './navigation/NavLink';
 
 export { default as TitleBanner } from './banners/TitleBanner';
+export { default as ProductBanner } from './banners/ProductBanner';
