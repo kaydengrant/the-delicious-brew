@@ -18,7 +18,7 @@ const Divider: React.FC<Props> = ({ data }) => {
         <Image
           loader={() => img}
           src={img}
-          alt="divider image"
+          alt="Divider image"
           className="object-cover"
           fill
           unoptimized
