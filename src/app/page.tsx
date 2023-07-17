@@ -1,36 +1,44 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+import Loading from './loading/page';
 import { client } from '../../sanity/lib/client';
 import { NavBar, Footer, TitleBanner, NavFooter, Divider } from '../components';
 
-const getSanityData = async () => {
-  const bannerQuery = '*[_type == "banner" && page == "home"]';
-  const dividerQuery = '*[_type == "divider" && name == "testerimage"]';
-  const banners = await client.fetch(bannerQuery);
-  const divider = await client.fetch(dividerQuery);
+const Home = () => {
+  const [sanityBanners, setSanityBanners] = useState(null);
+  const [sanityDividers, setSanityDividers] = useState(null);
 
-  return {
-    props: { banners, divider },
-  };
-};
+  useEffect(() => {
+    const getSanityData = async () => {
+      const bannerQuery = '*[_type == "banner" && page == "home"]';
+      const dividerQuery = '*[_type == "divider" && name == "testerimage"]';
+      const banners = await client.fetch(bannerQuery);
+      const dividers = await client.fetch(dividerQuery);
+      setSanityBanners(banners);
+      setSanityDividers(dividers);
+    };
 
-const Home = async () => {
-  const sanityData = await getSanityData();
+    getSanityData();
+  }, []);
+
+  if (!sanityBanners || !sanityDividers) {
+    return <Loading />;
+  }
 
   return (
     <>
       <NavBar />
       <div className="content-container">
         <TitleBanner
-          data={sanityData.props.banners[0]}
+          data={sanityBanners[0]}
           direction="left"
           link="shop"
           color="bg-green"
         />
-        <Divider data={sanityData.props.divider[0]} />
+        <Divider data={sanityDividers[0]} />
         <TitleBanner
-          data={sanityData.props.banners[1]}
+          data={sanityBanners[1]}
           direction="right"
           link="blog"
           color="bg-brown"
