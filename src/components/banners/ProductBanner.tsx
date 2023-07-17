@@ -17,11 +17,11 @@ type Props = {
 };
 
 const ProductBanner: React.FC<Props> = ({ data, color }) => {
-  const img = urlForImage(data.image).width(1400).url();
+  const img = urlForImage(data.image).width(1000).url();
 
   return (
     <section
-      className={`flex flex-col-reverse md:flex-row justify-center lg:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md`}
+      className={`flex flex-col-reverse md:flex-row justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:max-h-[300px]`}
     >
       <div className="flex flex-col lg:max-w-[45%] gap-4 text-center lg:text-left">
         <h3>{data.subTitle}</h3>
@@ -34,9 +34,11 @@ const ProductBanner: React.FC<Props> = ({ data, color }) => {
         loader={() => img}
         src={img}
         alt="Product banner image"
-        width={300}
-        height={300}
+        width={250}
+        height={250}
         className="drop-shadow-xl"
+        unoptimized
+        priority
       />
     </section>
   );

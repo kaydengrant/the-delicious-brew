@@ -66,6 +66,7 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
           className="border-4 border-white rounded-xl object-cover"
           fill
           unoptimized
+          priority
         />
       </div>
     </section>
