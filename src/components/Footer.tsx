@@ -4,11 +4,11 @@ const Footer: React.FC = () => {
   return (
     <>
       <div className=" bg-gray h-0.5" />
-      <section className="flex flex-col justify-center w-full">
+      <div className="flex flex-col justify-center w-full py-2">
         <p className="flex justify-end px-2">
           © 2023 Kayden Grant. All Rights Reserved.
         </p>
-      </section>
+      </div>
     </>
   );
 };
