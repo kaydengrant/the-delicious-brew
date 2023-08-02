@@ -1,6 +1,7 @@
 export { default as Footer } from './Footer';
 export { default as OutlineButton } from './OutlineButton';
 export { default as Divider } from './Divider';
+export { default as Carousel } from './Carousel';
 
 export { default as NavBlog } from './navigation/NavBlog';
 export { default as NavShop } from './navigation/NavShop';

@@ -1,6 +1,5 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 
 import Loading from '../loading/page';
 import { client } from '../../../sanity/lib/client';
@@ -13,6 +12,7 @@ import {
   VerticalBanner,
   LabelBanner,
 } from '../../components';
+import Carousel from '@/components/Carousel';
 
 const Shop: React.FC = () => {
   const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
@@ -20,6 +20,7 @@ const Shop: React.FC = () => {
   const [sanityProductBanners, setSanityProductBanners] = useState(null);
   const [sanityCategoryBanners, setSanityCategoryBanners] = useState(null);
   const [sanityBlogBanners, setSanityBlogBanners] = useState(null);
+  const [sanityCreditBanners, setSanityCreditBanners] = useState(null);
   const [sanityDividers, setSanityDividers] = useState(null);
 
   useEffect(() => {
@@ -28,14 +29,19 @@ const Shop: React.FC = () => {
       const categoryBannerQuery =
         '*[_type == "banner" && page == "shop-category"]';
       const blogBannerQuery = '*[_type == "banner" && page == "shop-blog"]';
+      const creditBannerQuery = '*[_type == "banner" && page == "shop-credit"]';
       const dividerQuery = '*[_type == "divider" && name == "testerimage"]';
+
       const productBanners = await client.fetch(productBannerQuery);
       const categoryBanners = await client.fetch(categoryBannerQuery);
       const blogBanners = await client.fetch(blogBannerQuery);
+      const creditBanners = await client.fetch(creditBannerQuery);
       const dividers = await client.fetch(dividerQuery);
+
       setSanityProductBanners(productBanners);
       setSanityCategoryBanners(categoryBanners);
       setSanityBlogBanners(blogBanners);
+      setSanityCreditBanners(creditBanners);
       setSanityDividers(dividers);
     };
 
@@ -56,6 +62,7 @@ const Shop: React.FC = () => {
     !sanityProductBanners ||
     !sanityCategoryBanners ||
     !sanityBlogBanners ||
+    !sanityCreditBanners ||
     !sanityDividers
   ) {
     return <Loading />;
@@ -117,23 +124,27 @@ const Shop: React.FC = () => {
             <VerticalBanner data={sanityCategoryBanners[2]} />
           </div>
         </section>
-        {/**credit card offer */}
+        <ProductBanner data={sanityCreditBanners[0]} color="bg-green" />
         <section>
           <h2 className="text-center md:text-left">
             Explore Trending Blog Posts
           </h2>
           <div className="flex flex-row items-center">
-            <FaAngleLeft className="text-gray clickable" size={50} />
-            <div className="flex flex-row overflow-x-hidden">
-              {sanityBlogBanners.map((item, index) => {
-                return (
-                  <div key={index} className="mx-2">
-                    <LabelBanner data={item} />
-                  </div>
-                );
-              })}
-            </div>
-            <FaAngleRight className="text-gray clickable" size={50} />
+            <Carousel
+              index={blogCurrentIndex}
+              setIndex={setBlogCurrentIndex}
+              length={3}
+            >
+              {sanityBlogBanners
+                .slice(blogCurrentIndex, blogCurrentIndex + 3)
+                .map((item, index) => {
+                  return (
+                    <div key={index} className="mx-4">
+                      <LabelBanner data={item} />
+                    </div>
+                  );
+                })}
+            </Carousel>
           </div>
         </section>
         <NavFooter />
