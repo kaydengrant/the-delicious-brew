@@ -8,7 +8,7 @@
   }
 
   .clickable {
-    @apply cursor-pointer transition-all select-none hover:scale-110 active:brightness-125;
+    @apply cursor-pointer transition-all select-none hover:scale-105 active:brightness-105;
   }
 }
 
@@ -33,7 +33,7 @@ body {
 }
 
 section {
-  @apply my-5;
+  @apply my-8;
 }
 
 h1 {
