@@ -35,6 +35,11 @@ const schema = {
       title: 'Page',
       type: 'string',
     },
+    {
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+    },
   ],
 };
 
