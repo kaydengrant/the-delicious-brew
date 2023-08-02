@@ -11,7 +11,6 @@ type Props = {
     image: any;
     title: string;
     subTitle: string;
-    details: string;
     slug: string;
   };
   direction: 'left' | 'right';

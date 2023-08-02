@@ -1,19 +1,42 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 
 import Loading from '../loading/page';
 import { client } from '../../../sanity/lib/client';
-import { Footer, NavBar, NavFooter, ProductBanner } from '../../components';
+import {
+  Footer,
+  NavBar,
+  NavFooter,
+  ProductBanner,
+  Divider,
+  VerticalBanner,
+  LabelBanner,
+} from '../../components';
 
 const Shop: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [sanityBanners, setSanityBanners] = useState<any>();
+  const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
+  const [blogCurrentIndex, setBlogCurrentIndex] = useState(0);
+  const [sanityProductBanners, setSanityProductBanners] = useState(null);
+  const [sanityCategoryBanners, setSanityCategoryBanners] = useState(null);
+  const [sanityBlogBanners, setSanityBlogBanners] = useState(null);
+  const [sanityDividers, setSanityDividers] = useState(null);
 
   useEffect(() => {
     const getSanityData = async () => {
-      const bannerQuery = '*[_type == "banner" && page == "shop-hero"]';
-      const banners = await client.fetch(bannerQuery);
-      setSanityBanners(banners);
+      const productBannerQuery = '*[_type == "banner" && page == "shop-hero"]';
+      const categoryBannerQuery =
+        '*[_type == "banner" && page == "shop-category"]';
+      const blogBannerQuery = '*[_type == "banner" && page == "shop-blog"]';
+      const dividerQuery = '*[_type == "divider" && name == "testerimage"]';
+      const productBanners = await client.fetch(productBannerQuery);
+      const categoryBanners = await client.fetch(categoryBannerQuery);
+      const blogBanners = await client.fetch(blogBannerQuery);
+      const dividers = await client.fetch(dividerQuery);
+      setSanityProductBanners(productBanners);
+      setSanityCategoryBanners(categoryBanners);
+      setSanityBlogBanners(blogBanners);
+      setSanityDividers(dividers);
     };
 
     getSanityData();
@@ -21,15 +44,20 @@ const Shop: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(currentIndex + 1);
-      if (currentIndex >= 2) {
-        setCurrentIndex(0);
+      setHeroCurrentIndex(heroCurrentIndex + 1);
+      if (heroCurrentIndex >= 2) {
+        setHeroCurrentIndex(0);
       }
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [heroCurrentIndex]);
 
-  if (!sanityBanners) {
+  if (
+    !sanityProductBanners ||
+    !sanityCategoryBanners ||
+    !sanityBlogBanners ||
+    !sanityDividers
+  ) {
     return <Loading />;
   }
 
@@ -41,48 +69,72 @@ const Shop: React.FC = () => {
           <div className="flex flex-col-reverse lg:flex-row items-center lg:gap-4">
             <div className="flex flex-row lg:flex-col gap-4">
               <button
-                onClick={() => setCurrentIndex(0)}
+                onClick={() => setHeroCurrentIndex(0)}
                 className={`w-3 h-3 ${
-                  currentIndex == 0 ? 'bg-black' : 'bg-gray'
+                  heroCurrentIndex == 0 ? 'bg-black' : 'bg-gray'
                 } rounded-full clickable`}
               />
               <button
-                onClick={() => setCurrentIndex(1)}
+                onClick={() => setHeroCurrentIndex(1)}
                 className={`w-3 h-3 ${
-                  currentIndex == 1 ? 'bg-black' : 'bg-gray'
+                  heroCurrentIndex == 1 ? 'bg-black' : 'bg-gray'
                 } rounded-full clickable`}
               />
               <button
-                onClick={() => setCurrentIndex(2)}
+                onClick={() => setHeroCurrentIndex(2)}
                 className={`w-3 h-3 ${
-                  currentIndex == 2 ? 'bg-black' : 'bg-gray'
+                  heroCurrentIndex == 2 ? 'bg-black' : 'bg-gray'
                 } rounded-full clickable`}
               />
             </div>
             <div className="lg:flex-1">
-              {sanityBanners.slice(currentIndex, currentIndex + 1).map(() => (
-                <ProductBanner
-                  key={0}
-                  data={sanityBanners[currentIndex]}
-                  color={
-                    currentIndex % 3 == 0
-                      ? 'bg-blue'
-                      : currentIndex % 3 == 1
-                      ? 'bg-green'
-                      : 'bg-brown'
-                  }
-                />
-              ))}
+              {sanityProductBanners
+                .slice(heroCurrentIndex, heroCurrentIndex + 1)
+                .map(() => (
+                  <ProductBanner
+                    key={0}
+                    data={sanityProductBanners[heroCurrentIndex]}
+                    color={
+                      heroCurrentIndex % 3 == 0
+                        ? 'bg-blue'
+                        : heroCurrentIndex % 3 == 1
+                        ? 'bg-green'
+                        : 'bg-brown'
+                    }
+                  />
+                ))}
             </div>
           </div>
         </section>
-        {/**divider */}
+        <Divider data={sanityDividers[0]} />
         <section>
-          <h2>Browse Our Top Categories</h2>
+          <h2 className="text-center md:text-left mb-6 md:mb-0">
+            Browse Our Top Categories
+          </h2>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <VerticalBanner data={sanityCategoryBanners[0]} />
+            <VerticalBanner data={sanityCategoryBanners[1]} />
+            <VerticalBanner data={sanityCategoryBanners[2]} />
+          </div>
         </section>
         {/**credit card offer */}
         <section>
-          <h2>Explore Trending Blog Posts</h2>
+          <h2 className="text-center md:text-left">
+            Explore Trending Blog Posts
+          </h2>
+          <div className="flex flex-row items-center">
+            <FaAngleLeft className="text-gray clickable" size={50} />
+            <div className="flex flex-row overflow-x-hidden">
+              {sanityBlogBanners.map((item, index) => {
+                return (
+                  <div key={index} className="mx-2">
+                    <LabelBanner data={item} />
+                  </div>
+                );
+              })}
+            </div>
+            <FaAngleRight className="text-gray clickable" size={50} />
+          </div>
         </section>
         <NavFooter />
         <Footer />

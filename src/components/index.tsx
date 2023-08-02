@@ -11,3 +11,5 @@ export { default as NavLink } from './navigation/NavLink';
 
 export { default as TitleBanner } from './banners/TitleBanner';
 export { default as ProductBanner } from './banners/ProductBanner';
+export { default as VerticalBanner } from './banners/VerticalBanner';
+export { default as LabelBanner } from './banners/LabelBanner';

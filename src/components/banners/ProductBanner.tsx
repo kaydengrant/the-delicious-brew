@@ -21,7 +21,7 @@ const ProductBanner: React.FC<Props> = ({ data, color }) => {
 
   return (
     <section
-      className={`flex flex-col-reverse md:flex-row justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:max-h-[300px]`}
+      className={`flex flex-col-reverse md:flex-row justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:h-72`}
     >
       <div className="flex flex-col lg:max-w-[45%] gap-4 text-center lg:text-left">
         <h3>{data.subTitle}</h3>
