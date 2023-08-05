@@ -24,10 +24,8 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
   return (
     <section
       className={`flex ${
-        direction === 'left'
-          ? 'flex-col-reverse md:flex-row'
-          : 'flex-col-reverse md:flex-row-reverse'
-      } justify-center lg:justify-between items-center gap-6 ${color} rounded-2xl p-6 drop-shadow-md`}
+        direction === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
+      } flex-col-reverse justify-center lg:justify-between items-center gap-6 ${color} rounded-2xl p-6 drop-shadow-md`}
     >
       <div
         className={`flex flex-col lg:max-w-[45%] ${

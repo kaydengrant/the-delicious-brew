@@ -13,20 +13,43 @@ type Props = {
     details: string;
     slug: string;
   };
+  direction: 'left' | 'right';
+  flipText?: boolean;
   color: string;
 };
 
-const ProductBanner: React.FC<Props> = ({ data, color }) => {
+const ProductBanner: React.FC<Props> = ({
+  data,
+  direction,
+  flipText,
+  color,
+}) => {
   const img = urlForImage(data.image).width(1000).url();
 
   return (
     <section
-      className={`flex flex-col-reverse md:flex-row justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:h-72`}
+      className={`flex flex-col-reverse ${
+        direction === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
+      }  justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:h-72`}
     >
-      <div className="flex flex-col lg:max-w-[45%] gap-4 text-center lg:text-left">
-        <h3>{data.subTitle}</h3>
-        <h1 className="hidden sm:flex">{data.title}</h1>
-        <span className="flex justify-center lg:justify-start">
+      <div
+        className={`flex flex-col lg:max-w-[55%] gap-4 text-center ${
+          direction === 'left' ? 'lg:text-left' : 'lg:text-right'
+        }`}
+      >
+        <div
+          className={`flex ${
+            flipText === true ? 'flex-col-reverse' : 'flex-col'
+          }`}
+        >
+          <h3>{data.subTitle}</h3>
+          <h1 className="hidden sm:flex">{data.title}</h1>
+        </div>
+        <span
+          className={`flex justify-center ${
+            direction === 'left' ? 'lg:justify-start' : 'lg:justify-end'
+          }`}
+        >
           <OutlineButton text="Shop Now" Icon={ImArrowRight2} />
         </span>
       </div>
