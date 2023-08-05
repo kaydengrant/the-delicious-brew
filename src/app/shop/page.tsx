@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 import Loading from '../loading/page';
 import { client } from '../../../sanity/lib/client';
@@ -11,8 +12,8 @@ import {
   Divider,
   VerticalBanner,
   LabelBanner,
+  Carousel,
 } from '../../components';
-import Carousel from '@/components/Carousel';
 
 const Shop: React.FC = () => {
   const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
@@ -101,6 +102,7 @@ const Shop: React.FC = () => {
                   <ProductBanner
                     key={0}
                     data={sanityProductBanners[heroCurrentIndex]}
+                    direction="left"
                     color={
                       heroCurrentIndex % 3 == 0
                         ? 'bg-blue'
@@ -119,12 +121,23 @@ const Shop: React.FC = () => {
             Browse Our Top Categories
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <VerticalBanner data={sanityCategoryBanners[0]} />
-            <VerticalBanner data={sanityCategoryBanners[1]} />
-            <VerticalBanner data={sanityCategoryBanners[2]} />
+            <Link href="/shop/products/pourover">
+              <VerticalBanner data={sanityCategoryBanners[0]} />
+            </Link>
+            <Link href="/shop/products/espresso">
+              <VerticalBanner data={sanityCategoryBanners[1]} />
+            </Link>
+            <Link href="/shop/products/accessories">
+              <VerticalBanner data={sanityCategoryBanners[2]} />
+            </Link>
           </div>
         </section>
-        <ProductBanner data={sanityCreditBanners[0]} color="bg-green" />
+        <ProductBanner
+          data={sanityCreditBanners[0]}
+          direction="right"
+          color="bg-green"
+          flipText
+        />
         <section>
           <h2 className="text-center md:text-left">
             Explore Trending Blog Posts
@@ -133,7 +146,7 @@ const Shop: React.FC = () => {
             <Carousel
               index={blogCurrentIndex}
               setIndex={setBlogCurrentIndex}
-              length={3}
+              length={sanityBlogBanners.length / 2}
             >
               {sanityBlogBanners
                 .slice(blogCurrentIndex, blogCurrentIndex + 3)

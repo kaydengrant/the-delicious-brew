@@ -36,7 +36,27 @@ const schema = {
         maxLength: 90,
       },
     },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
+      name: 'sales',
+      title: 'Sales',
+      type: 'number',
+    },
+    {
+      name: 'likes',
+      title: 'Likes',
+      type: 'number',
+    },
   ],
+  initialValue: {
+    sales: 0,
+    likes: 0,
+  },
 };
 
 export default schema;

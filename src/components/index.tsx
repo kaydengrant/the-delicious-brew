@@ -1,5 +1,4 @@
 export { default as Footer } from './Footer';
-export { default as OutlineButton } from './OutlineButton';
 export { default as Divider } from './Divider';
 export { default as Carousel } from './Carousel';
 
@@ -14,3 +13,6 @@ export { default as TitleBanner } from './banners/TitleBanner';
 export { default as ProductBanner } from './banners/ProductBanner';
 export { default as VerticalBanner } from './banners/VerticalBanner';
 export { default as LabelBanner } from './banners/LabelBanner';
+
+export { default as OutlineButton } from './buttons/OutlineButton';
+export { default as DropDownButton } from './buttons/DropDownButton';

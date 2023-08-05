@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 
 type Props = {
   children: ReactElement;
@@ -13,7 +13,7 @@ const Carousel: React.FC<Props> = ({ children, index, setIndex, length }) => {
     <>
       {index > 0 && (
         <FaAngleLeft
-          className="text-gray clickable"
+          className="text-gray clickable mx-2"
           size={50}
           onClick={() => {
             setIndex(index - 1);
@@ -23,7 +23,7 @@ const Carousel: React.FC<Props> = ({ children, index, setIndex, length }) => {
       <div className="flex flex-row overflow-x-hidden">{children}</div>
       {index < length && (
         <FaAngleRight
-          className="text-gray clickable"
+          className="text-gray clickable mx-2"
           size={50}
           onClick={() => {
             setIndex(index + 1);

@@ -93,14 +93,18 @@ export const categories = [
     name: 'espresso',
     title: 'Espresso',
     links: [
-      { key: 10, title: 'All Espresso', to: '/shop/espresso' },
-      { key: 11, title: 'Machines', to: '/shop/espresso/machines' },
+      { key: 10, title: 'All Espresso', to: '/shop/products/espresso' },
+      { key: 11, title: 'Machines', to: '/shop/products/espresso-machines' },
       {
         key: 12,
         title: 'Additional Tools & Accessories',
-        to: '/shop/espresso/accessories',
+        to: '/shop/products/espresso-accessories',
       },
-      { key: 13, title: 'Recommended Beans', to: '/shop/espresso/beans' },
+      {
+        key: 13,
+        title: 'Recommended Beans',
+        to: '/shop/products/espresso-beans',
+      },
     ],
   },
   {
@@ -108,14 +112,14 @@ export const categories = [
     name: 'drip',
     title: 'Drip',
     links: [
-      { key: 20, title: 'All Drip', to: '/shop/drip' },
-      { key: 21, title: 'Machines', to: '/shop/drip/machines' },
+      { key: 20, title: 'All Drip', to: '/shop/products/drip' },
+      { key: 21, title: 'Machines', to: '/shop/products/drip-machines' },
       {
         key: 22,
         title: 'Accessories',
-        to: '/shop/drip/accessories',
+        to: '/shop/products/drip-accessories',
       },
-      { key: 23, title: 'Recommended Beans', to: '/shop/drip/beans' },
+      { key: 23, title: 'Recommended Beans', to: '/shop/products/drip-beans' },
     ],
   },
   {
@@ -123,14 +127,18 @@ export const categories = [
     name: 'pourover',
     title: 'Pour Over',
     links: [
-      { key: 30, title: 'All Pour Over', to: '/shop/pourover' },
-      { key: 31, title: 'Brewers', to: '/shop/pourover/brewers' },
+      { key: 30, title: 'All Pour Over', to: '/shop/products/pourover' },
+      { key: 31, title: 'Brewers', to: '/shop/products/pourover-brewers' },
       {
         key: 32,
         title: 'Additional Tools & Accessories',
-        to: '/shop/pourover/accessories',
+        to: '/shop/products/pourover-accessories',
       },
-      { key: 33, title: 'Recommended Beans', to: '/shop/pourover/beans' },
+      {
+        key: 33,
+        title: 'Recommended Beans',
+        to: '/shop/products/pourover-beans',
+      },
     ],
   },
   {
@@ -138,14 +146,14 @@ export const categories = [
     name: 'press',
     title: 'Press',
     links: [
-      { key: 40, title: 'All Press', to: '/shop/press' },
-      { key: 41, title: 'Brewers', to: '/shop/press/brewers' },
+      { key: 40, title: 'All Press', to: '/shop/products/press' },
+      { key: 41, title: 'Brewers', to: '/shop/products/press-brewers' },
       {
         key: 42,
         title: 'Additional Tools & Accessories',
-        to: '/shop/press/accessories',
+        to: '/shop/products/press-accessories',
       },
-      { key: 43, title: 'Recommended Beans', to: '/shop/press/beans' },
+      { key: 43, title: 'Recommended Beans', to: '/shop/products/press-beans' },
     ],
   },
   {
@@ -153,9 +161,9 @@ export const categories = [
     name: 'beans',
     title: 'Beans',
     links: [
-      { key: 50, title: 'All Beans', to: '/shop/beans' },
-      { key: 51, title: 'Whole Beans', to: '/shop/beans/whole' },
-      { key: 52, title: 'Pre-Ground Beans', to: '/shop/beans/ground' },
+      { key: 50, title: 'All Beans', to: '/shop/products/beans' },
+      { key: 51, title: 'Whole Beans', to: '/shop/products/beans-whole' },
+      { key: 52, title: 'Pre-Ground Beans', to: '/shop/products/beans-ground' },
     ],
   },
   {
@@ -163,21 +171,25 @@ export const categories = [
     name: 'accessories',
     title: 'Additional Tools & Accessories',
     links: [
-      { key: 60, title: 'All Accessories', to: '/shop/accessories' },
-      { key: 61, title: 'Grinders', to: '/shop/accessories/grinders' },
-      { key: 62, title: 'Cleaning Supplies', to: '/shop/accessories/cleaning' },
-      { key: 63, title: 'Filters', to: '/shop/accessories/filters' },
+      { key: 60, title: 'All Accessories', to: '/shop/products/accessories' },
+      { key: 61, title: 'Grinders', to: '/shop/products/accessories-grinders' },
+      {
+        key: 62,
+        title: 'Cleaning Supplies',
+        to: '/shop/products/accessories-cleaning',
+      },
+      { key: 63, title: 'Filters', to: '/shop/products/accessories-filters' },
       {
         key: 64,
         title: 'Espresso Accessories',
-        to: '/shop/accessories/espresso',
+        to: '/shop/products/accessories-espresso',
       },
-      { key: 65, title: 'Kettles', to: '/shop/accessories/kettles' },
-      { key: 66, title: 'Cups & Mugs', to: '/shop/accessories/cups' },
+      { key: 65, title: 'Kettles', to: '/shop/products/accessories-kettles' },
+      { key: 66, title: 'Cups & Mugs', to: '/shop/products/accessories-cups' },
       {
         key: 67,
         title: 'Scales & Measuring',
-        to: '/shop/accessories/measuring',
+        to: '/shop/products/accessories-measuring',
       },
     ],
   },

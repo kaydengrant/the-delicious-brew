@@ -17,8 +17,8 @@ const NavFooter: React.FC = () => {
             </div>
             <p>Your Gateway to Coffee Excellence.</p>
           </div>
-          {<div className="flex lg:hidden bg-gray h-0.5 w-40 my-6" />}
-          <nav className="flex flex-col lg:flex-row">
+          {<div className="flex lg:hidden bg-gray h-0.5 w-56 my-6" />}
+          <nav className="flex flex-col lg:flex-row justify-between">
             <ul className="flex flex-col">
               <li className="clickable">
                 <Link href="/shop">
@@ -56,11 +56,12 @@ const NavFooter: React.FC = () => {
                 </Link>
               </li>
             </ul>
-            {<div className="flex lg:hidden bg-gray h-0.5 w-40 my-6" />}
             <ul className="flex flex-col">
               <li className="clickable">
                 <Link href="/about">
-                  <p>About Delicious Brew</p>
+                  <p className="font-semibold lg:font-normal">
+                    About Delicious Brew
+                  </p>
                 </Link>
               </li>
               <li>
