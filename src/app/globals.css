@@ -22,6 +22,29 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* Chrome, Safari and Opera */
+  .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Chrome, Safari and Opera */
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #ececec;
+  }
+
+  /* Chrome, Safari and Opera */
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #b4b4b4;
+    border-radius: 100vh;
+  }
+
+  /* Chrome, Safari and Opera */
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #929292;
+  }
 }
 
 html {
