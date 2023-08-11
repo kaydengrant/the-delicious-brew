@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaAngleDown, FaAngleRight } from 'react-icons/fa6';
+import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 
 type Props = {
   data: { text: string; param: string }[];
@@ -27,7 +27,7 @@ const DropDownButton: React.FC<Props> = ({
         {isActive ? (
           <FaAngleDown size={20} className="clickable" />
         ) : (
-          <FaAngleRight size={20} className="clickable" />
+          <FaAngleUp size={20} className="clickable" />
         )}
       </button>
       <div className="relative flex justify-center">
