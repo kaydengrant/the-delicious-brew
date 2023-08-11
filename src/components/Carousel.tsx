@@ -6,31 +6,48 @@ type Props = {
   index: number;
   setIndex: React.Dispatch<React.SetStateAction<number>>;
   length: number;
+  additionalSetterUp?: () => void;
+  additionalSetterDown?: () => void;
 };
 
-const Carousel: React.FC<Props> = ({ children, index, setIndex, length }) => {
+const Carousel: React.FC<Props> = ({
+  children,
+  index,
+  setIndex,
+  length,
+  additionalSetterUp,
+  additionalSetterDown,
+}) => {
   return (
-    <>
-      {index > 0 && (
-        <FaAngleLeft
-          className="text-gray clickable mx-2"
-          size={50}
-          onClick={() => {
-            setIndex(index - 1);
-          }}
-        />
-      )}
-      <div className="flex flex-row overflow-x-hidden">{children}</div>
-      {index < length && (
-        <FaAngleRight
-          className="text-gray clickable mx-2"
-          size={50}
-          onClick={() => {
-            setIndex(index + 1);
-          }}
-        />
-      )}
-    </>
+    <div className="flex relative flex-row items-center gap-2">
+      <>
+        {index > 0 && (
+          <FaAngleLeft
+            className="text-gray z-50 clickable"
+            size={50}
+            onClick={() => {
+              setIndex(index - 1);
+              {
+                additionalSetterDown && additionalSetterDown();
+              }
+            }}
+          />
+        )}
+        <div className="flex flex-row overflow-x-hidden">{children}</div>
+        {index < length && (
+          <FaAngleRight
+            className="text-gray z-50 clickable"
+            size={50}
+            onClick={() => {
+              setIndex(index + 1);
+              {
+                additionalSetterUp && additionalSetterUp();
+              }
+            }}
+          />
+        )}
+      </>
+    </div>
   );
 };
 

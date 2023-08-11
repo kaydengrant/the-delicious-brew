@@ -23,9 +23,24 @@ const schema = {
       type: 'number',
     },
     {
-      name: 'details',
-      title: 'Details',
-      type: 'string',
+      name: 'specifications',
+      title: 'Specifications',
+      type: 'array',
+      of: [
+        {
+          name: 'spec',
+          title: 'Spec',
+          type: 'object',
+          fields: [
+            { name: 'title', title: 'Title', type: 'string' },
+            {
+              name: 'value',
+              title: 'Value',
+              type: 'string',
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'slug',
