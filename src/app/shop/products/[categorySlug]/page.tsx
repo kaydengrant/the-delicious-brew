@@ -14,15 +14,7 @@ import {
   OutlineButton,
 } from '../../../../components';
 import Loading from '../../../loading/page';
-
-const capitalizeString = (string: string) => {
-  const substrings = string.split(/[-\s]+/);
-  const capitalizedSubstrings = substrings.map((substring) => {
-    return substring.charAt(0).toUpperCase() + substring.slice(1).toLowerCase();
-  });
-
-  return capitalizedSubstrings.join(' ');
-};
+import { addCommasToNumber, capitalizeString } from '@/utils';
 
 const Products: React.FC = () => {
   const [sortByParam, setSortByParam] = useState(dropDownData[0]);
@@ -129,7 +121,7 @@ const Products: React.FC = () => {
               return (
                 <Link
                   key={index}
-                  href={`/shop/products/${currentCategory}/${item._id}?name=${item.name}`}
+                  href={`/shop/products/${currentCategory}/${item._id}?productName=${item.name}`}
                 >
                   <section className="flex flex-col bg-white w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl clickable">
                     <div
@@ -154,7 +146,7 @@ const Products: React.FC = () => {
                     <div className="flex flex-col justify-end gap-4">
                       <p className="truncate">{item.name}</p>
                       <div className="flex flex-row justify-between items-center ">
-                        <h4>${item.price}</h4>
+                        <h4>${addCommasToNumber(item.price)}</h4>
                         <div className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable">
                           <TbShoppingCartPlus size={20} />
                         </div>
