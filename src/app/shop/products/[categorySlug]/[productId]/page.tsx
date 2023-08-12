@@ -64,27 +64,8 @@ const ProductFocused: React.FC = () => {
       <div className="content-container">
         <section>
           <p>{capitalizedPathname}</p>
-          <div className="flex flex-col ">
-            <section className="flex flex-row justify-between">
-              {/* <Carousel
-                  index={currentIndex}
-                  setIndex={setCurrentIndex}
-                  length={sanityProduct[0].image.length - 1}
-                  additionalSetterDown={() =>
-                    setCurrentImage(
-                      urlForImage(sanityProduct[0].image[currentIndex - 1])
-                        .width(1000)
-                        .url()
-                    )
-                  }
-                  additionalSetterUp={() =>
-                    setCurrentImage(
-                      urlForImage(sanityProduct[0].image[currentIndex + 1])
-                        .width(1000)
-                        .url()
-                    )
-                  }
-                > */}
+          <section className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-10">
+            <div className="flex flex-col gap-4">
               <div
                 className={`flex relative rounded-xl ${
                   currentIndex % 3 == 0
@@ -92,7 +73,7 @@ const ProductFocused: React.FC = () => {
                     : currentIndex % 3 == 1
                     ? 'bg-green'
                     : 'bg-brown'
-                } w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] p-2 drop-shadow-sm`}
+                } w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] p-2 drop-shadow-sm`}
               >
                 {currentImage ? (
                   <Image
@@ -116,65 +97,12 @@ const ProductFocused: React.FC = () => {
                     priority
                   />
                 )}
-                {/* </Carousel> */}
               </div>
-              <div className="flex flex-col justify-between w-[350px] lg:w-[400px]">
-                <div>
-                  <h4>{sanityProduct[0].name}</h4>
-                  <p className="font-semibold">${sanityProduct[0].price}</p>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <div className="flex flex-row gap-4 items-center text-successGreen">
-                    <BsCheckLg size={25} />
-                    <p>In Stock</p>
-                  </div>
-                  <QuantityButton
-                    quantityState={stockQuantity}
-                    setQuantityState={setStockQuantity}
-                  />
-                  <p>
-                    Subtotal: $
-                    {addCommasToNumber(sanityProduct[0].price * stockQuantity)}
-                  </p>
-                  <div className="flex flex-col lg:flex-row lg:items-center gap-2 w-44 lg:w-full">
-                    <OutlineButton text="Add to Cart" Icon={FaShoppingCart} />
-                    <OutlineButton text="Buy Now" Icon={FaAngleRight} />
-                  </div>
-                  <div className="flex flex-row items-center gap-4">
-                    <FaTruck size={25} />
-                    <p>
-                      <span className="font-semibold">FREE SHIPPING.</span>{' '}
-                      Arrives in{' '}
-                      <span className="font-semibold">3-8 Business Days.</span>
-                    </p>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <div className="bg-gray h-0.5" />
-                    <div className="flex flex-row justify-between">
-                      <div className="flex flex-col items-center text-center">
-                        <FaBoxOpen size={25} />
-                        <p className="leading-tight">Easy Returns</p>
-                      </div>
-                      <div className="flex flex-col items-center text-center">
-                        <FaLock size={25} />
-                        <p className="leading-tight">Secure Transactions</p>
-                      </div>
-                      <div className="flex flex-col items-center text-center">
-                        <FaTruck size={25} />
-                        <p className="leading-tight">Free Shipping</p>
-                      </div>
-                    </div>
-                    <div className="bg-gray h-0.5" />
-                  </div>
-                </div>
-              </div>
-            </section>
-            <div className="flex relative max-w-[350px] lg:max-w-[400px]">
-              <div className="flex flex-row relative w-full overflow-x-auto gap-4 scrollbar pb-2">
-                {sanityProduct[0].image.map((item, index) => {
-                  const imgPreview = urlForImage(item).width(1000).url();
+              <div className="flex relative max-w-[300px] md:max-w-[400px] lg:max-w-[450px]">
+                <div className="flex flex-row relative w-full overflow-x-auto gap-2 scrollbar pb-2">
+                  {sanityProduct[0].image.map((item, index) => {
+                    const imgPreview = urlForImage(item).width(1000).url();
 
-                  if (index !== currentIndex) {
                     return (
                       <div
                         key={index}
@@ -184,6 +112,10 @@ const ProductFocused: React.FC = () => {
                             : index % 3 == 1
                             ? 'bg-green'
                             : 'bg-brown'
+                        } ${
+                          index === currentIndex
+                            ? 'border-2 border-black'
+                            : undefined
                         } min-w-[100px] min-h-[100px] p-2 drop-shadow-sm`}
                         onClick={() => {
                           setCurrentImage(urlForImage(item).width(1000).url()),
@@ -201,12 +133,72 @@ const ProductFocused: React.FC = () => {
                         />
                       </div>
                     );
-                  }
-                  return undefined;
-                })}
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+            <div className="flex flex-col justify-between w-[300px] md:w-[400px] lg:w-[450px]">
+              <div className="flex flex-col gap-4">
+                <h3 className="text-center lg:text-left">
+                  {sanityProduct[0].name}
+                </h3>
+                <h4 className="font-semibold text-center lg:text-left">
+                  ${sanityProduct[0].price}
+                </h4>
+              </div>
+              <div className="flex flex-col gap-4 mt-4 lg:mt-0">
+                <div className="flex flex-row gap-4 items-center justify-center lg:justify-start text-successGreen">
+                  <BsCheckLg size={25} />
+                  <p>In Stock</p>
+                </div>
+                <div className="flex self-center lg:self-start">
+                  <QuantityButton
+                    quantityState={stockQuantity}
+                    setQuantityState={setStockQuantity}
+                  />
+                </div>
+                <p className="text-center lg:text-left">
+                  Subtotal: $
+                  {addCommasToNumber(sanityProduct[0].price * stockQuantity)}
+                </p>
+                <div className="flex flex-col lg:flex-row self-center lg:self-start gap-2 w-52 lg:w-full">
+                  <OutlineButton
+                    text="Add to Cart"
+                    Icon={FaShoppingCart}
+                    fillContainer
+                  />
+                  <OutlineButton
+                    text="Buy Now"
+                    Icon={FaAngleRight}
+                    fillContainer
+                  />
+                </div>
+                <p className="text-center">
+                  <span className="font-semibold">FREE SHIPPING.</span> Arrives
+                  in <span className="font-semibold">3-8 Business Days.</span>
+                </p>
+                <div className="flex flex-col gap-4">
+                  <div className="bg-gray h-0.5" />
+                  <div className="flex flex-row justify-between">
+                    <div className="flex flex-col items-center text-center">
+                      <FaBoxOpen size={25} />
+                      <p className="leading-tight">Easy Returns</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center">
+                      <FaLock size={25} />
+                      <p className="leading-tight">Secure Transactions</p>
+                    </div>
+                    <div className="flex flex-col items-center text-center">
+                      <FaTruck size={25} />
+                      <p className="leading-tight">Free Shipping</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/** spacer */}
+              <div className="hidden lg:flex h-[100px]" />
+            </div>
+          </section>
         </section>
         {sanityProduct[0].specifications && (
           <ProductSpecifications data={sanityProduct[0].specifications} />
