@@ -33,14 +33,12 @@ const Home = () => {
         <TitleBanner
           data={sanityBanners[0]}
           direction="left"
-          link="shop"
           color="bg-green"
         />
         <Divider data={sanityDividers[0]} />
         <TitleBanner
           data={sanityBanners[1]}
           direction="right"
-          link="blog"
           color="bg-brown"
         />
         <NavFooter />

@@ -36,7 +36,7 @@ type NavScreenType =
   | 'shop'
   | 'shop-espresso'
   | 'shop-drip'
-  | 'shop-pourover'
+  | 'shop-pour-over'
   | 'shop-press'
   | 'shop-beans'
   | 'shop-accessories'
@@ -109,7 +109,7 @@ const RenderNavScreen: React.FC<RenderProps> = ({
       );
     case 'shop-espresso':
     case 'shop-drip':
-    case 'shop-pourover':
+    case 'shop-pour-over':
     case 'shop-press':
     case 'shop-beans':
     case 'shop-accessories':

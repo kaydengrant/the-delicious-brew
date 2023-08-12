@@ -124,20 +124,20 @@ export const categories = [
   },
   {
     key: 3,
-    name: 'pourover',
+    name: 'pour-over',
     title: 'Pour Over',
     links: [
-      { key: 30, title: 'All Pour Over', to: '/shop/products/pourover' },
-      { key: 31, title: 'Brewers', to: '/shop/products/pourover-brewers' },
+      { key: 30, title: 'All Pour Over', to: '/shop/products/pour-over' },
+      { key: 31, title: 'Brewers', to: '/shop/products/pour-over-brewers' },
       {
         key: 32,
         title: 'Additional Tools & Accessories',
-        to: '/shop/products/pourover-accessories',
+        to: '/shop/products/pour-over-accessories',
       },
       {
         key: 33,
         title: 'Recommended Beans',
-        to: '/shop/products/pourover-beans',
+        to: '/shop/products/pour-over-beans',
       },
     ],
   },

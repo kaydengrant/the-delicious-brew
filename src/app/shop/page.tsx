@@ -121,7 +121,7 @@ const Shop: React.FC = () => {
             Browse Our Top Categories
           </h2>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/shop/products/pourover">
+            <Link href="/shop/products/pour-over">
               <VerticalBanner data={sanityCategoryBanners[0]} />
             </Link>
             <Link href="/shop/products/espresso">

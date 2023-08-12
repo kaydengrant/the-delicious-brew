@@ -26,32 +26,32 @@ const NavFooter: React.FC = () => {
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/espresso">
+                <Link href="/shop/products/espresso">
                   <p>Espresso</p>
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/drip">
+                <Link href="/shop/products/drip">
                   <p>Drip</p>
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/pourover">
+                <Link href="/shop/products/pour-over">
                   <p>Pour Over</p>
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/press">
+                <Link href="/shop/products/press">
                   <p>Press</p>
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/beans">
+                <Link href="/shop/products/beans">
                   <p>Beans</p>
                 </Link>
               </li>
               <li className="clickable">
-                <Link href="/shop/accessories">
+                <Link href="/shop/products/accessories">
                   <p>Additional Tools & Accessories</p>
                 </Link>
               </li>

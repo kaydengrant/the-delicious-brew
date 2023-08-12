@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Slug } from 'sanity';
 import { ImArrowRight2 } from 'react-icons/im';
 
 import { urlForImage } from '../../../sanity/lib/client';
@@ -11,15 +12,30 @@ type Props = {
     image: any;
     title: string;
     subTitle: string;
-    slug: string;
+    slug: Slug;
   };
   direction: 'left' | 'right';
-  link?: 'shop' | 'blog';
   color: string;
 };
 
-const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
+const TitleBanner: React.FC<Props> = ({ data, direction, color }) => {
+  const [link, setLink] = useState('');
   const img = urlForImage(data.image).width(1400).url();
+
+  useEffect(() => {
+    const handleLink = () => {
+      switch (data.slug.current) {
+        case 'shop':
+          setLink('/shop');
+          break;
+        case 'blog':
+          setLink('/blog');
+          break;
+      }
+    };
+
+    handleLink();
+  }, [data]);
 
   return (
     <section
@@ -43,16 +59,9 @@ const TitleBanner: React.FC<Props> = ({ data, direction, link, color }) => {
               : 'justify-center lg:justify-start'
           }`}
         >
-          {link === 'shop' && (
-            <Link href="/shop">
-              <OutlineButton text={`Visit Shop`} Icon={ImArrowRight2} />
-            </Link>
-          )}
-          {link === 'blog' && (
-            <Link href="/blog">
-              <OutlineButton text={`Visit Blog`} Icon={ImArrowRight2} />
-            </Link>
-          )}
+          <Link href={link}>
+            <OutlineButton text={`Visit Shop`} Icon={ImArrowRight2} />
+          </Link>
         </div>
       </div>
       <div className="w-full min-h-[250px] md:h-full relative pt-[35%] ">
