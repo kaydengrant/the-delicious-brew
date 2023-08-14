@@ -2,6 +2,7 @@ export { default as Footer } from './Footer';
 export { default as Divider } from './Divider';
 export { default as Carousel } from './Carousel';
 export { default as ProductSpecifications } from './ProductSpecifications';
+export { default as CartItem } from './CartItem';
 
 export { default as NavBlog } from './navigation/NavBlog';
 export { default as NavShop } from './navigation/NavShop';
@@ -18,3 +19,5 @@ export { default as LabelBanner } from './banners/LabelBanner';
 export { default as OutlineButton } from './buttons/OutlineButton';
 export { default as DropDownButton } from './buttons/DropDownButton';
 export { default as QuantityButton } from './buttons/QuantityButton';
+
+export { default as ToastProvider } from './ToastProvider';

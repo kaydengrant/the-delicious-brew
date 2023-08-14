@@ -1,7 +1,11 @@
 import React from 'react';
 
-const page = () => {
-  return <div>page</div>;
+const Blog: React.FC = () => {
+  return (
+    <>
+      <h1>Under Construction</h1>
+    </>
+  );
 };
 
-export default page;
+export default Blog;

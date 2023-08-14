@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import Loading from '../loading/page';
+import Loading from '../../components/Loading';
 import { client } from '../../../sanity/lib/client';
 import {
   Footer,
@@ -71,98 +71,94 @@ const Shop: React.FC = () => {
 
   return (
     <>
-      <NavBar />
-      <div className="content-container">
-        <section>
-          <div className="flex flex-col-reverse lg:flex-row items-center lg:gap-4">
-            <div className="flex flex-row lg:flex-col gap-4">
-              <button
-                onClick={() => setHeroCurrentIndex(0)}
-                className={`w-3 h-3 ${
-                  heroCurrentIndex == 0 ? 'bg-black' : 'bg-gray'
-                } rounded-full clickable`}
-              />
-              <button
-                onClick={() => setHeroCurrentIndex(1)}
-                className={`w-3 h-3 ${
-                  heroCurrentIndex == 1 ? 'bg-black' : 'bg-gray'
-                } rounded-full clickable`}
-              />
-              <button
-                onClick={() => setHeroCurrentIndex(2)}
-                className={`w-3 h-3 ${
-                  heroCurrentIndex == 2 ? 'bg-black' : 'bg-gray'
-                } rounded-full clickable`}
-              />
-            </div>
-            <div className="lg:flex-1">
-              {sanityProductBanners
-                .slice(heroCurrentIndex, heroCurrentIndex + 1)
-                .map(() => (
-                  <ProductBanner
-                    key={0}
-                    data={sanityProductBanners[heroCurrentIndex]}
-                    direction="left"
-                    color={
-                      heroCurrentIndex % 3 == 0
-                        ? 'bg-blue'
-                        : heroCurrentIndex % 3 == 1
-                        ? 'bg-green'
-                        : 'bg-brown'
-                    }
-                  />
-                ))}
-            </div>
+      <section>
+        <div className="flex flex-col-reverse lg:flex-row items-center lg:gap-4">
+          <div className="flex flex-row lg:flex-col gap-4">
+            <button
+              onClick={() => setHeroCurrentIndex(0)}
+              className={`w-3 h-3 ${
+                heroCurrentIndex == 0 ? 'bg-black' : 'bg-gray'
+              } rounded-full clickable`}
+            />
+            <button
+              onClick={() => setHeroCurrentIndex(1)}
+              className={`w-3 h-3 ${
+                heroCurrentIndex == 1 ? 'bg-black' : 'bg-gray'
+              } rounded-full clickable`}
+            />
+            <button
+              onClick={() => setHeroCurrentIndex(2)}
+              className={`w-3 h-3 ${
+                heroCurrentIndex == 2 ? 'bg-black' : 'bg-gray'
+              } rounded-full clickable`}
+            />
           </div>
-        </section>
-        <Divider data={sanityDividers[0]} />
-        <section>
-          <h2 className="text-center md:text-left mb-6 md:mb-0">
-            Browse Our Top Categories
-          </h2>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <Link href="/shop/products/pour-over">
-              <VerticalBanner data={sanityCategoryBanners[0]} />
-            </Link>
-            <Link href="/shop/products/espresso">
-              <VerticalBanner data={sanityCategoryBanners[1]} />
-            </Link>
-            <Link href="/shop/products/accessories">
-              <VerticalBanner data={sanityCategoryBanners[2]} />
-            </Link>
+          <div className="lg:flex-1">
+            {sanityProductBanners
+              .slice(heroCurrentIndex, heroCurrentIndex + 1)
+              .map(() => (
+                <ProductBanner
+                  key={0}
+                  data={sanityProductBanners[heroCurrentIndex]}
+                  direction="left"
+                  color={
+                    heroCurrentIndex % 3 == 0
+                      ? 'bg-blue'
+                      : heroCurrentIndex % 3 == 1
+                      ? 'bg-green'
+                      : 'bg-brown'
+                  }
+                />
+              ))}
           </div>
-        </section>
-        <ProductBanner
-          data={sanityCreditBanners[0]}
-          direction="right"
-          color="bg-green"
-          flipText
-        />
-        <section>
-          <h2 className="text-center md:text-left">
-            Explore Trending Blog Posts
-          </h2>
-          <div className="flex flex-row items-center">
-            <Carousel
-              index={blogCurrentIndex}
-              setIndex={setBlogCurrentIndex}
-              length={sanityBlogBanners.length / 2}
-            >
-              {sanityBlogBanners
-                .slice(blogCurrentIndex, blogCurrentIndex + 3)
-                .map((item, index) => {
-                  return (
-                    <div key={index} className="mx-4">
-                      <LabelBanner data={item} />
-                    </div>
-                  );
-                })}
-            </Carousel>
-          </div>
-        </section>
-        <NavFooter />
-        <Footer />
-      </div>
+        </div>
+      </section>
+      <Divider data={sanityDividers[0]} />
+      <section>
+        <h2 className="text-center md:text-left mb-6 md:mb-0">
+          Browse Our Top Categories
+        </h2>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <Link href="/shop/products/pour-over">
+            <VerticalBanner data={sanityCategoryBanners[0]} />
+          </Link>
+          <Link href="/shop/products/espresso">
+            <VerticalBanner data={sanityCategoryBanners[1]} />
+          </Link>
+          <Link href="/shop/products/accessories">
+            <VerticalBanner data={sanityCategoryBanners[2]} />
+          </Link>
+        </div>
+      </section>
+      <ProductBanner
+        data={sanityCreditBanners[0]}
+        direction="right"
+        color="bg-green"
+        flipText
+      />
+      <section>
+        <h2 className="text-center md:text-left">
+          Explore Trending Blog Posts
+        </h2>
+        <div className="flex flex-row items-center">
+          <Carousel
+            index={blogCurrentIndex}
+            setIndex={setBlogCurrentIndex}
+            length={sanityBlogBanners.length / 2}
+          >
+            {sanityBlogBanners
+              .slice(blogCurrentIndex, blogCurrentIndex + 3)
+              .map((item, index) => {
+                return (
+                  <div key={index} className="mx-4">
+                    <LabelBanner data={item} />
+                  </div>
+                );
+              })}
+          </Carousel>
+        </div>
+      </section>
+      <NavFooter />
     </>
   );
 };
