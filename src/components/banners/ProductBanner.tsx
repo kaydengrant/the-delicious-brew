@@ -12,7 +12,8 @@ type Props = {
     image: any;
     title: string;
     subTitle: string;
-    details: string;
+    specifications: string;
+    price: number;
     slug: Slug;
   };
   direction: 'left' | 'right';
@@ -60,7 +61,7 @@ const ProductBanner: React.FC<Props> = ({
     <section
       className={`flex flex-col-reverse ${
         direction === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
-      }  justify-center md:justify-between items-center ${color} rounded-2xl px-6 sm:px-10 py-6 drop-shadow-md md:h-72`}
+      }  justify-center md:justify-between items-center ${color} rounded-2xl p-6 sm:px-10 drop-shadow-md md:h-72`}
     >
       <div
         className={`flex flex-col lg:max-w-[55%] gap-4 text-center ${
