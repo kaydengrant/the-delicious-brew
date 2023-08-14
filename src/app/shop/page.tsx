@@ -5,8 +5,6 @@ import Link from 'next/link';
 import Loading from '../../components/Loading';
 import { client } from '../../../sanity/lib/client';
 import {
-  Footer,
-  NavBar,
   NavFooter,
   ProductBanner,
   Divider,
@@ -96,9 +94,9 @@ const Shop: React.FC = () => {
           <div className="lg:flex-1">
             {sanityProductBanners
               .slice(heroCurrentIndex, heroCurrentIndex + 1)
-              .map(() => (
+              .map((item) => (
                 <ProductBanner
-                  key={0}
+                  key={item._id}
                   data={sanityProductBanners[heroCurrentIndex]}
                   direction="left"
                   color={
@@ -148,9 +146,9 @@ const Shop: React.FC = () => {
           >
             {sanityBlogBanners
               .slice(blogCurrentIndex, blogCurrentIndex + 3)
-              .map((item, index) => {
+              .map((item) => {
                 return (
-                  <div key={index} className="mx-4">
+                  <div key={item._id} className="mx-4">
                     <LabelBanner data={item} />
                   </div>
                 );

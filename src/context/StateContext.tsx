@@ -1,17 +1,15 @@
 'use client';
-import { ProductBanner } from '@/components';
 import React, {
   createContext,
   useContext,
   useState,
-  useEffect,
   ReactElement,
 } from 'react';
 import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-const Context = createContext();
+const Context = createContext({});
 
 type Props = {
   children: ReactElement;
@@ -72,20 +70,29 @@ export const StateContext: React.FC<Props> = ({ children }) => {
   const toggleCartItemQuantity = (id: string, value: 'inc' | 'dec') => {
     foundProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
-    const newCartItems = cartItems.filter((item) => item._id !== id);
 
     if (value === 'inc') {
-      setCartItems([
-        ...newCartItems,
-        { ...foundProduct, quantity: foundProduct.quantity + 1 },
-      ]);
+      setCartItems(
+        cartItems.map((item) => {
+          if (item._id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        })
+      );
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } else if (value === 'dec' && foundProduct.quantity > 1) {
-      setCartItems([
-        ...newCartItems,
-        { ...foundProduct, quantity: foundProduct.quantity - 1 },
-      ]);
+      setCartItems(
+        cartItems.map((item) => {
+          if (item._id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        })
+      );
       setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
     }
@@ -109,6 +116,7 @@ export const StateContext: React.FC<Props> = ({ children }) => {
         totalPrice,
         totalQuantities,
         qty,
+        setQty,
         incQty,
         decQty,
         onAdd,
