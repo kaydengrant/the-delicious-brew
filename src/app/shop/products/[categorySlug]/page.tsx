@@ -3,8 +3,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { TbShoppingCartPlus } from 'react-icons/tb';
 
+import { AddShoppingCart } from '../../../../utils/icons';
 import { client, urlForImage } from '../../../../../sanity/lib/client';
 import {
   DropDownButton,
@@ -116,7 +116,7 @@ const Products: React.FC = () => {
 
             return (
               <Link
-                key={index}
+                key={item._id}
                 href={`/shop/products/${currentCategory}/${item._id}?productName=${item.name}`}
               >
                 <section className="flex flex-col bg-white w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl clickable">
@@ -144,7 +144,7 @@ const Products: React.FC = () => {
                     <div className="flex flex-row justify-between items-center ">
                       <h4>${addCommasToNumber(item.price)}</h4>
                       <div className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable">
-                        <TbShoppingCartPlus size={20} />
+                        <AddShoppingCart size={20} />
                       </div>
                     </div>
                   </div>

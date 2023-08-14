@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { GrClose } from 'react-icons/gr';
+
+import { Close } from '../../utils/icons';
 
 type Props = {
   status: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,7 +26,7 @@ const BlogNav: React.FC<Props> = ({ status }) => {
             onClick={() => status(false)}
             className="clickable flex flex-col items-center"
           >
-            <GrClose size={25} />
+            <Close size={25} />
             <p>Close</p>
           </li>
         </ul>

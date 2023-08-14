@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaMugHot } from 'react-icons/fa';
-import { GrClose } from 'react-icons/gr';
+
+import { MugHot, Close } from '../../utils/icons';
 
 import { OutlineButton } from '../../components';
 
@@ -31,7 +31,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
             onClick={() => status(false)}
             className="clickable flex flex-col items-center"
           >
-            <GrClose size={25} />
+            <Close size={25} />
             <p>Close</p>
           </li>
         </ul>
@@ -76,7 +76,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
               </li>
               <li>
                 <Link href="/about">
-                  <OutlineButton text="Buy me a Coffee" Icon={FaMugHot} />
+                  <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
                 </Link>
               </li>
             </ul>

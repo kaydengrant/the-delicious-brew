@@ -1,5 +1,6 @@
 import React from 'react';
-import { BsCheckLg } from 'react-icons/bs';
+
+import { Check } from '../utils/icons';
 
 type Props = {
   data: any;
@@ -20,7 +21,7 @@ const ProductSpecifications: React.FC<Props> = ({ data }) => {
               >
                 <p className="font-semibold">{item.title}</p>
                 {item.value == 'check' ? (
-                  <BsCheckLg size={25} className="text-successGreen" />
+                  <Check size={25} className="text-successGreen" />
                 ) : (
                   <p className="text-right">{item.value}</p>
                 )}

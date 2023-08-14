@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaMugHot } from 'react-icons/fa';
-import { GrClose } from 'react-icons/gr';
-import { LiaAngleLeftSolid, LiaAngleRightSolid } from 'react-icons/lia';
 
+import { MugHot, Close, AngleLeft, AngleRight } from '../../utils/icons';
 import { OutlineButton } from '../../components';
 import { categories } from './NavShop';
 
@@ -54,7 +52,7 @@ const NavMobile: React.FC<Props> = ({ status }) => {
           onClick={() => status(false)}
           className="clickable flex flex-col self-end items-center"
         >
-          <GrClose size={20} />
+          <Close size={20} />
           <p>Close</p>
         </div>
         <div className="w-full no-scrollbar overflow-y-scroll">
@@ -77,7 +75,7 @@ const NavMobile: React.FC<Props> = ({ status }) => {
               </li>
               <li>
                 <Link href="/about">
-                  <OutlineButton text="Buy me a Coffee" Icon={FaMugHot} />
+                  <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
                 </Link>
               </li>
             </ul>
@@ -130,7 +128,7 @@ const NavMobileHome: React.FC<HomeProps> = ({ status, setScreen }) => {
       <li onClick={() => status(false)}>
         <Link href="/" className="flex flex-row justify-between items-center">
           <h4>HOME</h4>
-          <LiaAngleRightSolid size={20} className="text-gray" />
+          <AngleRight size={20} className="text-gray" />
         </Link>
       </li>
       <li
@@ -138,14 +136,14 @@ const NavMobileHome: React.FC<HomeProps> = ({ status, setScreen }) => {
         className="flex flex-row justify-between items-center"
       >
         <h4>SHOP</h4>
-        <LiaAngleRightSolid size={20} className="text-gray" />
+        <AngleRight size={20} className="text-gray" />
       </li>
       <li
         onClick={() => setScreen('blog')}
         className="flex flex-row justify-between items-center"
       >
         <h4>BLOG</h4>
-        <LiaAngleRightSolid size={20} className="text-gray" />
+        <AngleRight size={20} className="text-gray" />
       </li>
     </>
   );
@@ -156,7 +154,7 @@ const NavMobileShop: React.FC<ShopProps> = ({ setScreen, setLinks }) => {
     <div className="flex flex-col gap-6">
       <li onClick={() => setScreen('home')}>
         <div className="flex flex-row justify-start items-center gap-6">
-          <LiaAngleLeftSolid size={20} className="text-gray" />
+          <AngleLeft size={20} className="text-gray" />
           <h4>SHOP</h4>
         </div>
       </li>
@@ -171,7 +169,7 @@ const NavMobileShop: React.FC<ShopProps> = ({ setScreen, setLinks }) => {
             className="flex flex-row justify-between items-center"
           >
             {category.title}
-            <LiaAngleRightSolid size={20} className="text-gray" />
+            <AngleRight size={20} className="text-gray" />
           </li>
         ))}
       </ul>
@@ -196,7 +194,7 @@ const NavMobileShopExtended: React.FC<ShopProps> = ({
           href="/"
           className="flex flex-row justify-start items-center gap-6"
         >
-          <LiaAngleLeftSolid size={20} className="text-gray" />
+          <AngleLeft size={20} className="text-gray" />
           <h4>{links[0].title.toUpperCase()}</h4>
         </Link>
       </li>

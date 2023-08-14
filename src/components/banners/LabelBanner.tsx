@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import { ImArrowRight2 } from 'react-icons/im';
 import { ColorValue } from '@sanity/color-input';
 
+import { ArrowRight } from '../../utils/icons';
 import { urlForImage } from '../../../sanity/lib/client';
 
 type Props = {
@@ -41,7 +41,7 @@ const LabelBanner: React.FC<Props> = ({ data }) => {
             {data.subTitle}
           </p>
         </div>
-        <ImArrowRight2 className="clickable text-white" size={30} />
+        <ArrowRight className="clickable text-white" size={30} />
       </div>
     </section>
   );

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { FaCoffee } from 'react-icons/fa';
-import { GrSearch, GrCart, GrMenu } from 'react-icons/gr';
 
+import { Logo, Search, Cart, HamburgerMenu } from '../../utils/icons';
 import { NavShop, NavLink, NavBlog, NavMobile } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
@@ -18,7 +17,7 @@ const NavBar: React.FC = () => {
         <nav className="flex flex-row w-full lg:w-[1000px] justify-between items-center p-4">
           <div className="flex flex-row items-center gap-8">
             <Link href="/">
-              <FaCoffee size={50} />
+              <Logo size={50} />
             </Link>
             <ul className="hidden md:flex flex-row items-center gap-4">
               <li
@@ -57,7 +56,7 @@ const NavBar: React.FC = () => {
               }}
               className="clickable flex flex-col items-center"
             >
-              <GrSearch size={25} />
+              <Search size={25} />
               <p>Search</p>
             </li>
             <li
@@ -75,7 +74,7 @@ const NavBar: React.FC = () => {
                       {totalQuantities}
                     </span>
                   )}
-                  <GrCart size={25} />
+                  <Cart size={25} />
                   <p>Cart</p>
                 </div>
               </Link>
@@ -87,7 +86,7 @@ const NavBar: React.FC = () => {
               onClick={() => setHamburgerOpen(true)}
               className="md:hidden clickable flex flex-col items-center"
             >
-              <GrMenu size={25} />
+              <HamburgerMenu size={25} />
               <p>Menu</p>
             </li>
           </ul>

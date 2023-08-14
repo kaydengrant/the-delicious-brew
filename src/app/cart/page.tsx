@@ -1,8 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
-import { FaCreditCard } from 'react-icons/fa';
-import { TbShoppingCartOff } from 'react-icons/tb';
 
+import { CreditCard, RemoveShoppingCart } from '../../utils/icons';
 import { CartItem, OutlineButton } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 import { addCommasToNumber } from '../../utils';
@@ -16,7 +15,7 @@ const Cart: React.FC = () => {
       <div className="bg-gray h-0.5" />
       {cartItems.length < 1 ? (
         <section className="flex flex-col justify-center items-center gap-4">
-          <TbShoppingCartOff size={150} />
+          <RemoveShoppingCart size={150} />
           <h4>Your cart is empty</h4>
           <OutlineButton text="Continue Shopping" fillContainer />
         </section>
@@ -51,11 +50,11 @@ const Cart: React.FC = () => {
                 <h4>${addCommasToNumber(totalPrice)}</h4>
               </div>
               <div className="bg-gray h-0.5" />
-              <div className="flex flex-row justify-around gap-4 px-4">
+              <div className="flex flex-col md:flex-row justify-around self-center gap-2 md:gap-4 px-4 w-[300px] md:w-full">
                 <OutlineButton text="Continue Shopping" fillContainer />
                 <OutlineButton
                   text="Pay With Stripe"
-                  Icon={FaCreditCard}
+                  Icon={CreditCard}
                   fillContainer
                 />
               </div>

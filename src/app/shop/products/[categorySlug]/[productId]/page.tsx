@@ -2,10 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { BsCheckLg } from 'react-icons/bs';
-import { FaShoppingCart } from 'react-icons/fa';
-import { FaAngleRight, FaTruck, FaBoxOpen, FaLock } from 'react-icons/fa6';
 
+import {
+  Check,
+  Cart,
+  AngleRight,
+  Truck,
+  BoxOpen,
+  Lock,
+} from '../../../../../utils/icons';
 import { client, urlForImage } from '../../../../../../sanity/lib/client';
 import {
   NavFooter,
@@ -21,7 +26,7 @@ const ProductFocused: React.FC = () => {
   const [sanityProduct, setSanityProduct] = useState(null);
   const [currentImage, setCurrentImage] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd } = useStateContext();
+  const { decQty, incQty, qty, setQty, onAdd } = useStateContext();
 
   const pathname = usePathname().split('/');
   const searchParams = useSearchParams();
@@ -101,7 +106,7 @@ const ProductFocused: React.FC = () => {
 
                   return (
                     <div
-                      key={index}
+                      key={item._id}
                       className={`flex relative rounded-xl ${
                         index % 3 == 0 && index === currentIndex
                           ? 'bg-blue'
@@ -146,12 +151,13 @@ const ProductFocused: React.FC = () => {
             </div>
             <div className="flex flex-col gap-4 mt-4 lg:mt-0">
               <div className="flex flex-row gap-4 items-center justify-center lg:justify-start text-successGreen">
-                <BsCheckLg size={25} />
+                <Check size={25} />
                 <p>In Stock</p>
               </div>
               <div className="flex self-center lg:self-start">
                 <QuantityButton
                   quantityState={qty}
+                  setQuantityState={setQty}
                   incQuantityState={incQty}
                   decQuantityState={decQty}
                 />
@@ -162,13 +168,13 @@ const ProductFocused: React.FC = () => {
               <div className="flex flex-col lg:flex-row self-center lg:self-start gap-2 w-52 lg:w-full">
                 <OutlineButton
                   text="Add to Cart"
-                  Icon={FaShoppingCart}
+                  Icon={Cart}
                   onClickFunction={() => onAdd(sanityProduct[0], qty)}
                   fillContainer
                 />
                 <OutlineButton
                   text="Buy Now"
-                  Icon={FaAngleRight}
+                  Icon={AngleRight}
                   onClickFunction={() => onAdd(sanityProduct[0], qty)}
                   fillContainer
                 />
@@ -181,15 +187,15 @@ const ProductFocused: React.FC = () => {
                 <div className="bg-gray h-0.5" />
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-col items-center text-center">
-                    <FaBoxOpen size={25} />
+                    <BoxOpen size={25} />
                     <p className="leading-tight">Easy Returns</p>
                   </div>
                   <div className="flex flex-col items-center text-center">
-                    <FaLock size={25} />
+                    <Lock size={25} />
                     <p className="leading-tight">Secure Transactions</p>
                   </div>
                   <div className="flex flex-col items-center text-center">
-                    <FaTruck size={25} />
+                    <Truck size={25} />
                     <p className="leading-tight">Free Shipping</p>
                   </div>
                 </div>

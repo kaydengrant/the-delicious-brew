@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Slug } from 'sanity';
-import { ImArrowRight2 } from 'react-icons/im';
 
+import { ArrowRight } from '../../utils/icons';
 import { urlForImage } from '../../../sanity/lib/client';
 import { OutlineButton } from '../../components';
 
@@ -82,7 +82,7 @@ const ProductBanner: React.FC<Props> = ({
           }`}
         >
           <Link href={link}>
-            <OutlineButton text="Shop Now" Icon={ImArrowRight2} />
+            <OutlineButton text="Shop Now" Icon={ArrowRight} />
           </Link>
         </span>
       </div>
