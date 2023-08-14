@@ -4,11 +4,13 @@ import { FaCoffee } from 'react-icons/fa';
 import { GrSearch, GrCart, GrMenu } from 'react-icons/gr';
 
 import { NavShop, NavLink, NavBlog, NavMobile } from '../../components';
+import { useStateContext } from '../../context/StateContext';
 
 const NavBar: React.FC = () => {
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const [blogOpen, setBlogOpen] = useState(false);
+  const { totalQuantities } = useStateContext();
 
   return (
     <>
@@ -67,8 +69,15 @@ const NavBar: React.FC = () => {
                 href="/cart"
                 className="clickable flex flex-col items-center"
               >
-                <GrCart size={25} />
-                <p>Cart</p>
+                <div className="relative">
+                  {totalQuantities > 0 && (
+                    <span className="absolute flex items-center justify-center right-[-4px] top-[-4px] bg-errorRed text-white w-5 h-5 rounded-full text-center font-semibold text-xs">
+                      {totalQuantities}
+                    </span>
+                  )}
+                  <GrCart size={25} />
+                  <p>Cart</p>
+                </div>
               </Link>
             </li>
             <li
