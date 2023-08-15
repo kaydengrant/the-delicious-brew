@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { MugHot, Close } from '../../utils/icons';
 
-import { OutlineButton } from '../../components';
+import { DonationButton, OutlineButton } from '../../components';
 
 type Props = {
   status: React.Dispatch<React.SetStateAction<boolean>>;
@@ -72,12 +72,14 @@ const ShopNav: React.FC<Props> = ({ status }) => {
             <div className="bg-gray w-0.5 h-full" />
             <ul className="flex flex-col text-right">
               <li className="clickable">
-                <p>About Delicious Brew</p>
+                <Link href="/about">
+                  <p>About Delicious Brew</p>
+                </Link>
               </li>
               <li>
-                <Link href="/about">
+                <DonationButton>
                   <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
-                </Link>
+                </DonationButton>
               </li>
             </ul>
           </div>

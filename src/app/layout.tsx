@@ -1,7 +1,6 @@
 'use client';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { StateContext } from '../context/StateContext';
 import { Footer, NavBar, ToastProvider } from '../components';

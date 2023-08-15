@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import {
@@ -172,12 +173,14 @@ const ProductFocused: React.FC = () => {
                   onClickFunction={() => onAdd(sanityProduct[0], qty)}
                   fillContainer
                 />
-                <OutlineButton
-                  text="Buy Now"
-                  Icon={AngleRight}
-                  onClickFunction={() => onAdd(sanityProduct[0], qty)}
-                  fillContainer
-                />
+                <Link href={'/cart'} className="w-full">
+                  <OutlineButton
+                    text="Buy Now"
+                    Icon={AngleRight}
+                    onClickFunction={() => onAdd(sanityProduct[0], qty)}
+                    fillContainer
+                  />
+                </Link>
               </div>
               <p className="text-center">
                 <span className="font-semibold">FREE SHIPPING.</span> Arrives in{' '}

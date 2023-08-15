@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { Logo, MugHot } from '../../utils/icons';
-import { OutlineButton } from '../../components';
+import { DonationButton, OutlineButton } from '../../components';
 
 const NavFooter: React.FC = () => {
   return (
@@ -65,7 +65,9 @@ const NavFooter: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
+                <DonationButton>
+                  <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
+                </DonationButton>
               </li>
             </ul>
           </nav>
