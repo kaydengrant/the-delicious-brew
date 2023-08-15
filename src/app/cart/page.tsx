@@ -62,11 +62,13 @@ const Cart: React.FC = () => {
                 <Link href={'/shop'} className="w-full">
                   <OutlineButton text="Continue Shopping" fillContainer />
                 </Link>
-                <OutlineButton
-                  text="Pay With Stripe"
-                  Icon={CreditCard}
-                  fillContainer
-                />
+                <Link href={'/cart/payment'} className="w-full">
+                  <OutlineButton
+                    text="Pay Now"
+                    Icon={CreditCard}
+                    fillContainer
+                  />
+                </Link>
               </div>
             </div>
           </div>

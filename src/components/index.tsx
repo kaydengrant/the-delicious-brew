@@ -19,5 +19,6 @@ export { default as LabelBanner } from './banners/LabelBanner';
 export { default as OutlineButton } from './buttons/OutlineButton';
 export { default as DropDownButton } from './buttons/DropDownButton';
 export { default as QuantityButton } from './buttons/QuantityButton';
+export { default as DonationButton } from './buttons/DonationButton';
 
 export { default as ToastProvider } from './ToastProvider';

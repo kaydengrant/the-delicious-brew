@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { MugHot, Close, AngleLeft, AngleRight } from '../../utils/icons';
-import { OutlineButton } from '../../components';
+import { DonationButton, OutlineButton } from '../../components';
 import { categories } from './NavShop';
 
 type Props = {
@@ -71,12 +71,14 @@ const NavMobile: React.FC<Props> = ({ status }) => {
             <div className="bg-gray h-0.5 w-full" />
             <ul className="flex w-full flex-col gap-1">
               <li className="clickable">
-                <p>About Delicious Brew</p>
+                <Link href="/about">
+                  <p>About Delicious Brew</p>
+                </Link>
               </li>
               <li>
-                <Link href="/about">
+                <DonationButton>
                   <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
-                </Link>
+                </DonationButton>
               </li>
             </ul>
           </nav>
