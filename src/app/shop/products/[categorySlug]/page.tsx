@@ -11,16 +11,16 @@ import {
   NavFooter,
   OutlineButton,
   QuickAddToCartModal,
+  Loading,
 } from '../../../../components';
-import Loading from '../../../../components/Loading';
 import { addCommasToNumber, capitalizeString } from '@/utils';
 
 const Products: React.FC = () => {
   const [sortByParam, setSortByParam] = useState(dropDownData[0]);
-  const [sanityProducts, setSanityProducts] = useState(null);
+  const [sanityProducts, setSanityProducts] = useState<any[] | null>(null);
   const [numberOfItems, setNumberOfItems] = useState(8);
   const [showQuickAdd, setShowQuickAdd] = useState(false);
-  const [quickAddProduct, setQuickAddProduct] = useState(null);
+  const [quickAddProduct, setQuickAddProduct] = useState<any | null>(null);
   const [quickAddIndex, setQuickAddIndex] = useState(0);
 
   const router = useRouter();
@@ -47,6 +47,7 @@ const Products: React.FC = () => {
       const productsQuery =
         '*[_type == "product" && "' + currentCategory + '" in category]';
       const products = await client.fetch(productsQuery);
+
       setSanityProducts(products);
     };
 

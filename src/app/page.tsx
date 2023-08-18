@@ -1,9 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 
-import Loading from '../components/Loading';
 import { client } from '../../sanity/lib/client';
-import { TitleBanner, NavFooter, Divider } from '../components';
+import { TitleBanner, NavFooter, Divider, Loading } from '../components';
 
 const Home = () => {
   const [sanityBanners, setSanityBanners] = useState(null);

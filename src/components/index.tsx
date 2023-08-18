@@ -4,6 +4,8 @@ export { default as Carousel } from './Carousel';
 export { default as ProductSpecifications } from './ProductSpecifications';
 export { default as CartItem } from './CartItem';
 export { default as QuickAddToCartModal } from './QuickAddToCartModal';
+export { default as SimilarProducts } from './SimilarProducts';
+export { default as Loading } from './Loading';
 export { default as NavBlog } from './navigation/NavBlog';
 export { default as NavShop } from './navigation/NavShop';
 export { default as NavMobile } from './navigation/NavMobile';

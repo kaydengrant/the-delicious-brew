@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import Loading from '../../components/Loading';
 import { client } from '../../../sanity/lib/client';
 import {
   NavFooter,
@@ -10,6 +9,7 @@ import {
   Divider,
   VerticalBanner,
   LabelBanner,
+  Loading,
 } from '../../components';
 
 const Shop: React.FC = () => {
@@ -115,15 +115,11 @@ const Shop: React.FC = () => {
           Browse Our Top Categories
         </h2>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <Link href="/shop/products/pour-over">
-            <VerticalBanner data={sanityCategoryBanners[0]} />
-          </Link>
-          <Link href="/shop/products/espresso">
-            <VerticalBanner data={sanityCategoryBanners[1]} />
-          </Link>
-          <Link href="/shop/products/accessories">
-            <VerticalBanner data={sanityCategoryBanners[2]} />
-          </Link>
+          {sanityCategoryBanners.map((item) => (
+            <Link key={item._id} href={`/shop/products`}>
+              <VerticalBanner data={item} />
+            </Link>
+          ))}
         </div>
       </section>
       <ProductBanner

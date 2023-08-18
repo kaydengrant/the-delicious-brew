@@ -1,4 +1,3 @@
-'use client';
 import React, {
   createContext,
   useContext,
@@ -7,26 +6,47 @@ import React, {
 } from 'react';
 import { toast } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
-
-const Context = createContext({});
-
-type Props = {
+type StateContextProps = {
   children: ReactElement;
 };
 
-export const StateContext: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [totalQuantities, setTotalQuantities] = useState(0);
-  const [qty, setQty] = useState(1);
+type ProviderProps = {
+  cartItems: any[];
+  totalPrice: number;
+  totalQuantities: number;
+  qty: number;
+  setQty: React.Dispatch<React.SetStateAction<number>>;
+  incQty: () => void;
+  decQty: () => void;
+  onAdd: (product: any, quantity: number) => void;
+  toggleCartItemQuantity: (id: string, value: 'inc' | 'dec') => void;
+  onRemove: (product: any) => void;
+};
+
+const Context = createContext<ProviderProps>({
+  cartItems: [],
+  totalPrice: 0,
+  totalQuantities: 0,
+  qty: 0,
+  setQty: () => {},
+  incQty: () => {},
+  decQty: () => {},
+  onAdd: () => {},
+  toggleCartItemQuantity: () => {},
+  onRemove: () => {},
+});
+
+export const StateContext: React.FC<StateContextProps> = ({ children }) => {
+  const [cartItems, setCartItems] = useState<any[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [totalQuantities, setTotalQuantities] = useState<number>(0);
+  const [qty, setQty] = useState<number>(1);
 
   let foundProduct: any;
-  let index;
 
   const onAdd = (product: any, quantity: number) => {
     const checkProductInCart = cartItems.find(
-      (item) => item._id === product._id
+      (item: any) => item._id === product._id
     );
 
     setTotalPrice(
@@ -69,7 +89,6 @@ export const StateContext: React.FC<Props> = ({ children }) => {
 
   const toggleCartItemQuantity = (id: string, value: 'inc' | 'dec') => {
     foundProduct = cartItems.find((item) => item._id === id);
-    index = cartItems.findIndex((product) => product._id === id);
 
     if (value === 'inc') {
       setCartItems(
