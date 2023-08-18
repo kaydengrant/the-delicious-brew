@@ -4,7 +4,7 @@
 
 @layer components {
   .content-container {
-    @apply px-2 pt-[6.2rem] w-[80%] lg:w-[1000px] lg:px-8 flex flex-col;
+    @apply px-2 pt-[6.2rem] w-[80%] lg:w-[1000px] lg:px-8 flex flex-col min-h-[100vh] justify-between;
   }
 
   .clickable {
@@ -48,11 +48,11 @@
 }
 
 html {
-  @apply bg-white scroll-smooth;
+  @apply bg-white scroll-smooth min-h-full;
 }
 
 body {
-  @apply flex flex-col justify-center min-w-full items-center text-black overflow-x-hidden;
+  @apply relative flex flex-col justify-center min-w-full items-center text-black overflow-x-hidden;
 }
 
 section {

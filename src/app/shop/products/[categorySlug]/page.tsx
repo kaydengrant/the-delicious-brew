@@ -10,6 +10,7 @@ import {
   DropDownButton,
   NavFooter,
   OutlineButton,
+  QuickAddToCartModal,
 } from '../../../../components';
 import Loading from '../../../../components/Loading';
 import { addCommasToNumber, capitalizeString } from '@/utils';
@@ -17,7 +18,10 @@ import { addCommasToNumber, capitalizeString } from '@/utils';
 const Products: React.FC = () => {
   const [sortByParam, setSortByParam] = useState(dropDownData[0]);
   const [sanityProducts, setSanityProducts] = useState(null);
-  const [numberOfItems, setNumberOfItems] = useState(10);
+  const [numberOfItems, setNumberOfItems] = useState(8);
+  const [showQuickAdd, setShowQuickAdd] = useState(false);
+  const [quickAddProduct, setQuickAddProduct] = useState(null);
+  const [quickAddIndex, setQuickAddIndex] = useState(0);
 
   const router = useRouter();
   const pathname = usePathname().split('/');
@@ -92,6 +96,13 @@ const Products: React.FC = () => {
 
   return (
     <>
+      {showQuickAdd && quickAddProduct && (
+        <QuickAddToCartModal
+          data={quickAddProduct}
+          setShowQuickAdd={setShowQuickAdd}
+          index={quickAddIndex}
+        />
+      )}
       <section>
         <div className="flex flex-col gap-6 text-center md:text-left">
           <p>{capitalizedPathname}</p>
@@ -119,7 +130,10 @@ const Products: React.FC = () => {
                 key={item._id}
                 href={`/shop/products/${currentCategory}/${item._id}?productName=${item.name}`}
               >
-                <section className="flex flex-col bg-white w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl clickable">
+                <section
+                  key={item._id}
+                  className="flex flex-col bg-white border-2 border-gray w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl"
+                >
                   <div
                     className={`flex w-full h-full relative ${
                       index % 3 == 0
@@ -143,7 +157,16 @@ const Products: React.FC = () => {
                     <p className="truncate">{item.name}</p>
                     <div className="flex flex-row justify-between items-center ">
                       <h4>${addCommasToNumber(item.price)}</h4>
-                      <div className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable">
+                      <div
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setShowQuickAdd(true);
+                          setQuickAddProduct(item);
+                          setQuickAddIndex(index);
+                        }}
+                        className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable"
+                      >
                         <AddShoppingCart size={20} />
                       </div>
                     </div>
@@ -157,7 +180,7 @@ const Products: React.FC = () => {
           {numberOfItems <= sanityProducts.length && (
             <OutlineButton
               text="Load More"
-              onClickFunction={() => setNumberOfItems(numberOfItems + 10)}
+              onClickFunction={() => setNumberOfItems(numberOfItems + 8)}
             />
           )}
         </div>
