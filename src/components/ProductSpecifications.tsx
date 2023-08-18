@@ -14,7 +14,7 @@ const ProductSpecifications: React.FC<Props> = ({ data }) => {
         <h3>Specifications</h3>
         <nav>
           <ul className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row gap-x-12 justify-items-start ">
-            {data.map((item, index) => (
+            {data.map((item: any, index: number) => (
               <li
                 key={index}
                 className="flex flex-row w-full justify-between mx-0"

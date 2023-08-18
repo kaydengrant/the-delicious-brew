@@ -10,15 +10,24 @@ import {
   VerticalBanner,
   LabelBanner,
   Loading,
+  TitleBanner,
 } from '../../components';
 
 const Shop: React.FC = () => {
   const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
-  const [sanityProductBanners, setSanityProductBanners] = useState(null);
-  const [sanityCategoryBanners, setSanityCategoryBanners] = useState(null);
-  const [sanityBlogBanners, setSanityBlogBanners] = useState(null);
-  const [sanityCreditBanners, setSanityCreditBanners] = useState(null);
-  const [sanityDividers, setSanityDividers] = useState(null);
+  const [sanityProductBanners, setSanityProductBanners] = useState<
+    any[] | null
+  >(null);
+  const [sanityCategoryBanners, setSanityCategoryBanners] = useState<
+    any[] | null
+  >(null);
+  const [sanityBlogBanners, setSanityBlogBanners] = useState<any[] | null>(
+    null
+  );
+  const [sanityCreditBanners, setSanityCreditBanners] = useState<any[] | null>(
+    null
+  );
+  const [sanityDividers, setSanityDividers] = useState<any[] | null>(null);
 
   useEffect(() => {
     const getSanityData = async () => {
@@ -92,7 +101,7 @@ const Shop: React.FC = () => {
           <div className="lg:flex-1">
             {sanityProductBanners
               .slice(heroCurrentIndex, heroCurrentIndex + 1)
-              .map((item) => (
+              .map((item: any) => (
                 <ProductBanner
                   key={item._id}
                   data={sanityProductBanners[heroCurrentIndex]}
@@ -115,8 +124,8 @@ const Shop: React.FC = () => {
           Browse Our Top Categories
         </h2>
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {sanityCategoryBanners.map((item) => (
-            <Link key={item._id} href={`/shop/products`}>
+          {sanityCategoryBanners.map((item: any) => (
+            <Link key={item._id} href={`/shop/products/${item.slug.current}`}>
               <VerticalBanner data={item} />
             </Link>
           ))}
@@ -133,7 +142,7 @@ const Shop: React.FC = () => {
           Explore Trending Blog Posts
         </h2>
         <div className="flex flex-row items-center overflow-x-auto gap-x-4 scrollbar snap-x">
-          {sanityBlogBanners.map((item) => {
+          {sanityBlogBanners.map((item: any) => {
             return (
               <div key={item._id} className="snap-start">
                 <LabelBanner data={item} />
