@@ -59,7 +59,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
                     <li
                       key={link.key}
                       onClick={() => status(false)}
-                      className="clickable hover:scale-100"
+                      className="clickable hover:scale-100 py-[0.1rem]"
                     >
                       <Link href={link.to}>{link.title}</Link>
                     </li>
