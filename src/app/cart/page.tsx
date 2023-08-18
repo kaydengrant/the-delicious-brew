@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 import { CreditCard, RemoveShoppingCart } from '../../utils/icons';

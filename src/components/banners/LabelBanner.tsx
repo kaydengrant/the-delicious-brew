@@ -20,7 +20,7 @@ const LabelBanner: React.FC<Props> = ({ data }) => {
   const img = urlForImage(data.image).width(1000).url();
 
   return (
-    <section className="flex flex-col items-center rounded-2xl drop-shadow-md w-[325px] h-[250px]">
+    <section className="flex flex-col items-center rounded-2xl drop-shadow-md w-[200px] h-[125px] sm:w-[325px] sm:h-[250px]">
       <div className="w-full h-full relative ">
         <Image
           loader={() => img}
@@ -36,9 +36,9 @@ const LabelBanner: React.FC<Props> = ({ data }) => {
         style={{ backgroundColor: data.color.hex }}
         className="flex flex-row justify-between items-end w-full p-2 rounded-b-xl h-24"
       >
-        <div className="flex flex-col justify-around w-[80%] h-20 gap-2">
+        <div className="flex flex-col justify-around w-[80%] sm:h-20 gap-2">
           <h4 className="text-white truncate">{data.title}</h4>
-          <p className="text-white text-clip leading-tight font-light">
+          <p className="hidden sm:flex text-white text-clip leading-tight font-light">
             {data.subTitle}
           </p>
         </div>
