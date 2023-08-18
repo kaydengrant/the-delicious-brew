@@ -8,11 +8,10 @@ const Payment = () => {
   return (
     <section className="flex flex-col items-center text-center gap-4">
       <h1>Sorry, this is only a portfolio project.</h1>
-      <h2>
-        {' '}
+      <h3>
         While the items are real, you cannot purchase them through
         TheDeliciousBrew.com
-      </h2>
+      </h3>
       <p>
         If you are still interested in purchasing the product, I recommend
         visiting the official site of the product you want to purchase. If you
