@@ -19,34 +19,42 @@ const Carousel: React.FC<Props> = ({
   additionalSetterUp,
   additionalSetterDown,
 }) => {
+  const handleIndexDown = () => {
+    if (index - 1 < 0) {
+      setIndex(length - 1);
+    } else {
+      setIndex(index - 1);
+    }
+  };
+
+  const handleIndexUp = () => {
+    if (index + 1 > length - 1) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
+  };
+
   return (
     <div className="flex relative flex-row items-center gap-2">
       <>
-        {index > 0 && (
-          <AngleLeft
-            className="text-gray z-50 clickable"
-            size={50}
-            onClick={() => {
-              setIndex(index - 1);
-              {
-                additionalSetterDown && additionalSetterDown();
-              }
-            }}
-          />
-        )}
+        <AngleLeft
+          className="text-gray clickable"
+          size={50}
+          onClick={() => {
+            handleIndexDown();
+            additionalSetterDown && additionalSetterDown();
+          }}
+        />
         <div className="flex flex-row overflow-x-hidden">{children}</div>
-        {index < length && (
-          <AngleRight
-            className="text-gray z-50 clickable"
-            size={50}
-            onClick={() => {
-              setIndex(index + 1);
-              {
-                additionalSetterUp && additionalSetterUp();
-              }
-            }}
-          />
-        )}
+        <AngleRight
+          className="text-gray clickable"
+          size={50}
+          onClick={() => {
+            handleIndexUp();
+            additionalSetterUp && additionalSetterUp();
+          }}
+        />
       </>
     </div>
   );
