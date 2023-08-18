@@ -19,13 +19,14 @@ import {
   QuantityButton,
   ProductSpecifications,
   Carousel,
+  SimilarProducts,
+  Loading,
 } from '../../../../../components';
-import Loading from '../../../../../components/Loading';
 import { addCommasToNumber, capitalizeString } from '../../../../../utils';
 import { useStateContext } from '../../../../../context/StateContext';
 
 const ProductFocused: React.FC = () => {
-  const [sanityProduct, setSanityProduct] = useState(null);
+  const [sanityProduct, setSanityProduct] = useState<any | null>(null);
   const [currentImage, setCurrentImage] = useState<any>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const { decQty, incQty, qty, setQty, onAdd } = useStateContext();
@@ -33,7 +34,7 @@ const ProductFocused: React.FC = () => {
   const pathname = usePathname().split('/');
   const searchParams = useSearchParams();
   const productId = pathname[pathname.length - 1];
-  const productName = searchParams.get('productName');
+  const productName = searchParams.get('productName') || '';
 
   pathname.splice(4, 1, productName);
 
@@ -138,7 +139,7 @@ const ProductFocused: React.FC = () => {
               </div>
               <div className="flex relative max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[450px]">
                 <div className="flex flex-row relative w-full overflow-x-auto gap-2 scrollbar snap-x pb-2">
-                  {sanityProduct[0].image.map((item, index) => {
+                  {sanityProduct[0].image.map((item: any, index: number) => {
                     const imgPreview = urlForImage(item).width(1000).url();
 
                     return (
@@ -249,6 +250,7 @@ const ProductFocused: React.FC = () => {
       {sanityProduct[0].specifications && (
         <ProductSpecifications data={sanityProduct[0].specifications} />
       )}
+      <SimilarProducts category={sanityProduct[0].category[0]} />
       <NavFooter />
     </>
   );
