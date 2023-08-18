@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ColorValue } from '@sanity/color-input';
 
 import { ArrowRight } from '../../utils/icons';
@@ -41,7 +42,9 @@ const LabelBanner: React.FC<Props> = ({ data }) => {
             {data.subTitle}
           </p>
         </div>
-        <ArrowRight className="clickable text-white" size={30} />
+        <Link href={'/blog'}>
+          <ArrowRight className="clickable text-white" size={30} />
+        </Link>
       </div>
     </section>
   );

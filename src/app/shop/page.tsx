@@ -10,12 +10,10 @@ import {
   Divider,
   VerticalBanner,
   LabelBanner,
-  Carousel,
 } from '../../components';
 
 const Shop: React.FC = () => {
   const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
-  const [blogCurrentIndex, setBlogCurrentIndex] = useState(0);
   const [sanityProductBanners, setSanityProductBanners] = useState(null);
   const [sanityCategoryBanners, setSanityCategoryBanners] = useState(null);
   const [sanityBlogBanners, setSanityBlogBanners] = useState(null);
@@ -138,22 +136,14 @@ const Shop: React.FC = () => {
         <h2 className="text-center md:text-left">
           Explore Trending Blog Posts
         </h2>
-        <div className="flex flex-row items-center">
-          <Carousel
-            index={blogCurrentIndex}
-            setIndex={setBlogCurrentIndex}
-            length={sanityBlogBanners.length / 2}
-          >
-            {sanityBlogBanners
-              .slice(blogCurrentIndex, blogCurrentIndex + 3)
-              .map((item) => {
-                return (
-                  <div key={item._id} className="mx-4">
-                    <LabelBanner data={item} />
-                  </div>
-                );
-              })}
-          </Carousel>
+        <div className="flex flex-row items-center overflow-x-auto gap-x-4 scrollbar snap-x">
+          {sanityBlogBanners.map((item) => {
+            return (
+              <div key={item._id} className="snap-start">
+                <LabelBanner data={item} />
+              </div>
+            );
+          })}
         </div>
       </section>
       <NavFooter />

@@ -18,6 +18,7 @@ import {
   OutlineButton,
   QuantityButton,
   ProductSpecifications,
+  Carousel,
 } from '../../../../../components';
 import Loading from '../../../../../components/Loading';
 import { addCommasToNumber, capitalizeString } from '../../../../../utils';
@@ -67,80 +68,116 @@ const ProductFocused: React.FC = () => {
       <section>
         <p>{capitalizedPathname}</p>
         <section className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-10">
-          <div className="flex flex-col gap-4">
-            <div
-              className={`flex relative rounded-xl ${
-                currentIndex % 3 == 0
-                  ? 'bg-blue'
-                  : currentIndex % 3 == 1
-                  ? 'bg-green'
-                  : 'bg-brown'
-              } w-[300px] h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] p-2 drop-shadow-sm`}
-            >
-              {currentImage ? (
-                <Image
-                  loader={() => currentImage}
-                  src={currentImage}
-                  alt="Product focused image"
-                  className="drop-shadow-xl object-cover rounded-xl"
-                  fill
-                  unoptimized
-                  priority
-                />
-              ) : (
-                // for first render
-                <Image
-                  loader={() => img}
-                  src={img}
-                  alt="Product focused image"
-                  className="drop-shadow-xl object-cover rounded-xl"
-                  fill
-                  unoptimized
-                  priority
-                />
-              )}
-            </div>
-            <div className="flex relative max-w-[300px] md:max-w-[400px] lg:max-w-[450px]">
-              <div className="flex flex-row relative w-full overflow-x-auto gap-2 scrollbar pb-2">
-                {sanityProduct[0].image.map((item, index) => {
-                  const imgPreview = urlForImage(item).width(1000).url();
+          <Carousel
+            index={currentIndex}
+            setIndex={setCurrentIndex}
+            length={sanityProduct[0].image.length}
+            additionalSetterDown={() => {
+              if (currentIndex - 1 < 0) {
+                setCurrentImage(
+                  urlForImage(
+                    sanityProduct[0].image[sanityProduct[0].image.length - 1]
+                  )
+                    .width(1000)
+                    .url()
+                );
+              } else {
+                setCurrentImage(
+                  urlForImage(sanityProduct[0].image[currentIndex - 1])
+                    .width(1000)
+                    .url()
+                );
+              }
+            }}
+            additionalSetterUp={() => {
+              if (currentIndex + 1 > sanityProduct[0].image.length - 1) {
+                setCurrentImage(
+                  urlForImage(sanityProduct[0].image[0]).width(1000).url()
+                );
+              } else {
+                setCurrentImage(
+                  urlForImage(sanityProduct[0].image[currentIndex + 1])
+                    .width(1000)
+                    .url()
+                );
+              }
+            }}
+          >
+            <div className="flex flex-col gap-4">
+              <div
+                className={`flex relative rounded-xl ${
+                  currentIndex % 3 == 0
+                    ? 'bg-blue'
+                    : currentIndex % 3 == 1
+                    ? 'bg-green'
+                    : 'bg-brown'
+                } w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] p-2 drop-shadow-sm`}
+              >
+                {currentImage ? (
+                  <Image
+                    loader={() => currentImage}
+                    src={currentImage}
+                    alt="Product focused image"
+                    className="drop-shadow-xl object-cover rounded-xl"
+                    fill
+                    unoptimized
+                    priority
+                  />
+                ) : (
+                  // for first render
+                  <Image
+                    loader={() => img}
+                    src={img}
+                    alt="Product focused image"
+                    className="drop-shadow-xl object-cover rounded-xl"
+                    fill
+                    unoptimized
+                    priority
+                  />
+                )}
+              </div>
+              <div className="flex relative max-w-[200px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[450px]">
+                <div className="flex flex-row relative w-full overflow-x-auto gap-2 scrollbar snap-x pb-2">
+                  {sanityProduct[0].image.map((item, index) => {
+                    const imgPreview = urlForImage(item).width(1000).url();
 
-                  return (
-                    <div
-                      key={item._id}
-                      className={`flex relative rounded-xl ${
-                        index % 3 == 0 && index === currentIndex
-                          ? 'bg-blue'
-                          : index % 3 == 1 && index === currentIndex
-                          ? 'bg-green'
-                          : index % 3 == 2 && index === currentIndex
-                          ? 'bg-brown'
-                          : 'bg-gray'
-                      } ${
-                        index === currentIndex
-                          ? 'border-2 border-gray'
-                          : undefined
-                      } min-w-[100px] min-h-[100px] p-2 drop-shadow-sm`}
-                      onClick={() => {
-                        setCurrentImage(urlForImage(item).width(1000).url()),
+                    return (
+                      <div
+                        key={index}
+                        className={`flex relative rounded-xl ${
+                          index % 3 == 0 && index === currentIndex
+                            ? 'bg-blue'
+                            : index % 3 == 1 && index === currentIndex
+                            ? 'bg-green'
+                            : index % 3 == 2 && index === currentIndex
+                            ? 'bg-brown'
+                            : 'bg-gray'
+                        } ${
+                          index === currentIndex
+                            ? 'border-2 border-gray'
+                            : undefined
+                        } min-w-[100px] min-h-[100px] snap-start p-2 drop-shadow-sm`}
+                        onClick={() => {
+                          setCurrentImage(urlForImage(item).width(1000).url());
                           setCurrentIndex(index);
-                      }}
-                    >
-                      <Image
-                        loader={() => imgPreview}
-                        src={imgPreview}
-                        alt="Product focused image"
-                        className="drop-shadow-sm object-cover rounded-xl"
-                        fill
-                        unoptimized
-                        priority
-                      />
-                    </div>
-                  );
-                })}
+                        }}
+                      >
+                        <Image
+                          loader={() => imgPreview}
+                          src={imgPreview}
+                          alt="Product focused image"
+                          className="drop-shadow-sm object-cover rounded-xl"
+                          fill
+                          unoptimized
+                          priority
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
+          </Carousel>
           <div className="flex flex-col justify-between w-[300px] md:w-[400px] lg:w-[450px]">
             <div className="flex flex-col gap-4">
               <h3 className="text-center lg:text-left">
