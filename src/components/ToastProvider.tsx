@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
 import { Slide, ToastContainer } from 'react-toastify';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 type Props = {
   children: ReactNode;
 };

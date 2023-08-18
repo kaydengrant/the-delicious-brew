@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Slug } from 'sanity';
 
 import { ArrowRight } from '../../utils/icons';
+import { capitalizeString } from '../../utils';
 import { urlForImage } from '../../../sanity/lib/client';
 import { OutlineButton } from '../../components';
 
@@ -60,7 +61,10 @@ const TitleBanner: React.FC<Props> = ({ data, direction, color }) => {
           }`}
         >
           <Link href={link}>
-            <OutlineButton text={`Visit Shop`} Icon={ArrowRight} />
+            <OutlineButton
+              text={`Visit ${capitalizeString(data.slug.current)}`}
+              Icon={ArrowRight}
+            />
           </Link>
         </div>
       </div>

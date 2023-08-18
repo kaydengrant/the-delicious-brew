@@ -71,10 +71,10 @@ const ProductBanner: React.FC<Props> = ({
         <div
           className={`flex ${
             flipText === true ? 'flex-col-reverse' : 'flex-col'
-          }`}
+          } gap-4 md:gap-0`}
         >
           <h3>{data.subTitle}</h3>
-          <h1 className="hidden sm:flex">{data.title}</h1>
+          <h1>{data.title}</h1>
         </div>
         <span
           className={`flex justify-center ${
