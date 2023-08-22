@@ -149,9 +149,9 @@ const Products: React.FC = () => {
                       src={img}
                       alt="Product image"
                       className="drop-shadow-xl object-contain"
+                      loading="lazy"
                       fill
                       unoptimized
-                      priority
                     />
                   </div>
                   <div className="flex flex-col justify-end gap-4">

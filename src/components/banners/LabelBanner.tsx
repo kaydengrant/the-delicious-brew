@@ -27,9 +27,9 @@ const LabelBanner: React.FC<Props> = ({ data }) => {
           src={img}
           alt="Label banner image"
           className="drop-shadow-xl rounded-t-xl object-cover"
+          loading="lazy"
           fill
           unoptimized
-          priority
         />
       </div>
       <div

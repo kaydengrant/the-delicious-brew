@@ -74,9 +74,9 @@ const TitleBanner: React.FC<Props> = ({ data, direction, color }) => {
           src={img}
           alt="Title banner image"
           className="border-4 border-white rounded-xl object-cover"
+          loading="lazy"
           fill
           unoptimized
-          priority
         />
       </div>
     </section>

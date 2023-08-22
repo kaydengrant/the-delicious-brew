@@ -38,9 +38,9 @@ const CartItem: React.FC<Props> = ({ data, index, quantity }) => {
           src={img}
           alt="Product banner image"
           className="drop-shadow-xl object-contain"
+          loading="lazy"
           fill
           unoptimized
-          priority
         />
       </div>
       <div className="flex flex-col md:justify-between items-center md:items-start w-[80%] md:w-[65%] h-full gap-2 md:gap-0">

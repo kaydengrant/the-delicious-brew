@@ -55,9 +55,9 @@ const Payment: React.FC = () => {
                     src={img}
                     alt="Product banner image"
                     className="drop-shadow-xl object-contain"
+                    loading="lazy"
                     fill
                     unoptimized
-                    priority
                   />
                 </div>
                 <div className="flex flex-col text-start">
@@ -92,9 +92,9 @@ const Payment: React.FC = () => {
                     src={img}
                     alt="Product banner image"
                     className="drop-shadow-xl object-contain"
+                    loading="lazy"
                     fill
                     unoptimized
-                    priority
                   />
                 </div>
                 <div className="flex flex-col text-start">
