@@ -4,24 +4,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { AddShoppingCart } from '../../../../utils/icons';
+import { AddShoppingCart, Cart, Check, Close } from '../../../../utils/icons';
 import { client, urlForImage } from '../../../../../sanity/lib/client';
 import {
   DropDownButton,
   NavFooter,
   OutlineButton,
-  QuickAddToCartModal,
   Loading,
+  QuantityButton,
 } from '../../../../components';
-import { addCommasToNumber, capitalizeString } from '@/utils';
+import { addCommasToNumber, capitalizeString } from '../../../../utils';
+import { useStateContext } from '../../../../context/StateContext';
 
 const Products: React.FC = () => {
   const [sortByParam, setSortByParam] = useState(dropDownData[0]);
   const [sanityProducts, setSanityProducts] = useState<any[] | null>(null);
   const [numberOfItems, setNumberOfItems] = useState(8);
-  const [showQuickAdd, setShowQuickAdd] = useState(false);
-  const [quickAddProduct, setQuickAddProduct] = useState<any | null>(null);
-  const [quickAddIndex, setQuickAddIndex] = useState(0);
+  const [quickAddIndex, setQuickAddIndex] = useState<number>();
+  const { qty, setQty, incQty, decQty, onAdd } = useStateContext();
 
   const router = useRouter();
   const pathname = usePathname().split('/');
@@ -97,13 +97,6 @@ const Products: React.FC = () => {
 
   return (
     <>
-      {showQuickAdd && quickAddProduct && (
-        <QuickAddToCartModal
-          data={quickAddProduct}
-          setShowQuickAdd={setShowQuickAdd}
-          index={quickAddIndex}
-        />
-      )}
       <section>
         <div className="flex flex-col gap-6 text-center md:text-left">
           <p className="md:w-[65%]">{capitalizedPathname}</p>
@@ -131,48 +124,85 @@ const Products: React.FC = () => {
                 key={item._id}
                 href={`/shop/products/${currentCategory}/${item._id}?productName=${item.name}`}
               >
-                <section
-                  key={item._id}
-                  className="flex flex-col bg-white border-2 border-gray w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl"
-                >
-                  <div
-                    className={`flex w-full h-full relative ${
-                      index % 3 == 0
-                        ? 'bg-blue'
-                        : index % 3 == 1
-                        ? 'bg-green'
-                        : 'bg-brown'
-                    } rounded-xl`}
+                {index !== quickAddIndex ? (
+                  <section
+                    key={item._id}
+                    className="flex flex-col bg-white border-2 border-gray w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl"
                   >
-                    <Image
-                      loader={() => img}
-                      src={img}
-                      alt="Product image"
-                      className="drop-shadow-xl object-contain"
-                      loading="lazy"
-                      fill
-                      unoptimized
-                    />
-                  </div>
-                  <div className="flex flex-col justify-end gap-4">
-                    <p className="truncate">{item.name}</p>
-                    <div className="flex flex-row justify-between items-center ">
-                      <h4>${addCommasToNumber(item.price)}</h4>
-                      <div
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setShowQuickAdd(true);
-                          setQuickAddProduct(item);
-                          setQuickAddIndex(index);
-                        }}
-                        className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable"
-                      >
-                        <AddShoppingCart size={20} />
+                    <div
+                      className={`flex w-full h-full relative ${
+                        index % 3 == 0
+                          ? 'bg-blue'
+                          : index % 3 == 1
+                          ? 'bg-green'
+                          : 'bg-brown'
+                      } rounded-xl`}
+                    >
+                      <Image
+                        loader={() => img}
+                        src={img}
+                        alt="Product image"
+                        className="drop-shadow-xl object-contain"
+                        loading="lazy"
+                        fill
+                        unoptimized
+                      />
+                    </div>
+                    <div className="flex flex-col justify-end gap-4">
+                      <p className="truncate">{item.name}</p>
+                      <div className="flex flex-row justify-between items-center ">
+                        <h4>${addCommasToNumber(item.price)}</h4>
+                        <div
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setQuickAddIndex(index);
+                          }}
+                          className="flex justify-center items-center w-10 border-2 border-black rounded p-1 clickable"
+                        >
+                          <AddShoppingCart size={20} />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </section>
+                  </section>
+                ) : (
+                  <section
+                    key={item._id}
+                    onClick={(e: React.MouseEvent) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
+                    className="flex flex-col justify-between bg-white border-2 border-gray w-[200px] h-[250px] rounded-xl p-2 drop-shadow-xl"
+                  >
+                    <div
+                      onClick={() => setQuickAddIndex(undefined)}
+                      className="absolute right-0 top-0 p-1 clickable"
+                    >
+                      <Close size={20} />
+                    </div>
+                    <p className="pr-5 truncate">{item.name}</p>
+                    <div className="flex flex-col items-center gap-2">
+                      <div className="flex flex-row gap-4 items-center justify-center lg:justify-start text-successGreen">
+                        <Check size={25} />
+                        <p>In Stock</p>
+                      </div>
+                      <QuantityButton
+                        quantityState={qty}
+                        setQuantityState={setQty}
+                        incQuantityState={incQty}
+                        decQuantityState={decQty}
+                      />
+                      <p>Subtotal: ${addCommasToNumber(item.price * qty)}</p>
+                      <OutlineButton
+                        text="Add to Cart"
+                        Icon={Cart}
+                        onClickFunction={() => {
+                          onAdd(item, qty);
+                        }}
+                      />
+                    </div>
+                  </section>
+                )}
               </Link>
             );
           })}

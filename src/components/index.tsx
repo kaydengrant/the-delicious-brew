@@ -3,7 +3,6 @@ export { default as Divider } from './Divider';
 export { default as Carousel } from './Carousel';
 export { default as ProductSpecifications } from './ProductSpecifications';
 export { default as CartItem } from './CartItem';
-export { default as QuickAddToCartModal } from './QuickAddToCartModal';
 export { default as SimilarProducts } from './SimilarProducts';
 export { default as SearchBar } from './SearchBar';
 export { default as Loading } from './screens/Loading';
