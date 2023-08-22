@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Slug } from 'sanity';
 
-import { ArrowRight } from '../../utils/icons';
+import { ArrowRight } from '../../utils';
 import { urlForImage } from '../../../sanity/lib/client';
 import { OutlineButton } from '../../components';
 

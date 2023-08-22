@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { MugHot, Close, AngleLeft, AngleRight, Cone } from '../../utils/icons';
+import { MugHot, Close, AngleLeft, AngleRight, Cone } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 import { categories } from './NavShop';
 

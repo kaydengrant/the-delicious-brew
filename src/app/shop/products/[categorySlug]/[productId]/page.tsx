@@ -5,14 +5,15 @@ import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 import {
+  addCommasToNumber,
+  capitalizeString,
   Check,
   Cart,
   AngleRight,
   Truck,
   BoxOpen,
   Lock,
-} from '../../../../../utils/icons';
-import { client, urlForImage } from '../../../../../../sanity/lib/client';
+} from '../../../../../utils';
 import {
   NavFooter,
   OutlineButton,
@@ -22,8 +23,8 @@ import {
   SimilarProducts,
   Loading,
 } from '../../../../../components';
-import { addCommasToNumber, capitalizeString } from '../../../../../utils';
 import { useStateContext } from '../../../../../context/StateContext';
+import { client, urlForImage } from '../../../../../../sanity/lib/client';
 
 const ProductFocused: React.FC = () => {
   const [sanityProduct, setSanityProduct] = useState<any | null>(null);

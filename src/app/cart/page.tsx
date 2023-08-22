@@ -2,10 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { CreditCard, RemoveShoppingCart } from '../../utils/icons';
+import { addCommasToNumber, CreditCard, RemoveShoppingCart } from '../../utils';
 import { CartItem, OutlineButton } from '../../components';
 import { useStateContext } from '../../context/StateContext';
-import { addCommasToNumber } from '../../utils';
 
 const Cart: React.FC = () => {
   const { totalPrice, totalQuantities, cartItems } = useStateContext();

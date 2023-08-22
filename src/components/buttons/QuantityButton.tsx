@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Plus, Minus } from '../../utils/icons';
+import { Plus, Minus } from '../../utils';
 
 type Props = {
   quantityState: number;

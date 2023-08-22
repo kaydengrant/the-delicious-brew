@@ -1,3 +1,28 @@
+export {
+  Logo,
+  MugHot,
+  AngleLeft,
+  AngleRight,
+  AngleDown,
+  AngleUp,
+  Truck,
+  BoxOpen,
+  Lock,
+  CreditCard,
+  Search,
+  Cart,
+  HamburgerMenu,
+  Close,
+  Check,
+  Plus,
+  Cone,
+  Minus,
+  ArrowRight,
+  AddShoppingCart,
+  RemoveShoppingCart,
+  Error,
+} from './icons';
+
 export const addCommasToNumber = (num: number) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

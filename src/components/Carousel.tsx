@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import { AngleLeft, AngleRight } from '../utils/icons';
+import { AngleLeft, AngleRight } from '../utils';
 
 type Props = {
   children: ReactElement;

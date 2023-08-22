@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
 
 import { OutlineButton, DonationButton } from '../../../components';
-import { MugHot } from '../../../utils/icons';
+import { MugHot } from '../../../utils';
 import { useStateContext } from '../../../context/StateContext';
 import { urlForImage } from '../../../../sanity/lib/client';
 

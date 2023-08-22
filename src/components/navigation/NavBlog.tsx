@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Close, Cone } from '../../utils/icons';
+import { Close, Cone } from '../../utils';
 
 type Props = {
   status: React.Dispatch<React.SetStateAction<boolean>>;

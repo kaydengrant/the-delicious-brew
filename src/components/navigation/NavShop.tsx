@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { MugHot, Close } from '../../utils/icons';
-
+import { MugHot, Close } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 
 type Props = {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Check } from '../utils/icons';
+import { Check } from '../utils';
 
 type Props = {
   data: any;

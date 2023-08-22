@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Cone } from '../../utils/icons';
+import { Cone } from '../../utils';
 
 const Construction: React.FC = () => {
   return (

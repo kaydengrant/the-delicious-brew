@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Error, ArrowRight } from '../utils/icons';
+import { Error, ArrowRight } from '../utils';
 import { OutlineButton } from '../components';
 
 const Custom404: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { Logo, Search, Cart, HamburgerMenu } from '../../utils/icons';
+import { Logo, Search, Cart, HamburgerMenu } from '../../utils';
 import {
   NavShop,
   NavLink,

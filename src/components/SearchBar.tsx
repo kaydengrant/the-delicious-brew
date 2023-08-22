@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { Search } from '../utils/icons';
+import { Search } from '../utils';
 import { client } from '../../sanity/lib/client';
 
 type SearchProps = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { Logo, MugHot } from '../../utils/icons';
+import { Logo, MugHot } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 
 const NavFooter: React.FC = () => {

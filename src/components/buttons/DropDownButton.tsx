@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { AngleDown, AngleUp } from '../../utils/icons';
+import { AngleDown, AngleUp } from '../../utils';
 
 type Props = {
   data: { text: string; param: string }[];

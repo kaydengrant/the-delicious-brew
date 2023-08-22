@@ -4,8 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { AddShoppingCart, Cart, Check, Close } from '../../../../utils/icons';
-import { client, urlForImage } from '../../../../../sanity/lib/client';
+import {
+  addCommasToNumber,
+  capitalizeString,
+  AddShoppingCart,
+  Cart,
+  Check,
+  Close,
+} from '../../../../utils';
 import {
   DropDownButton,
   NavFooter,
@@ -13,8 +19,8 @@ import {
   Loading,
   QuantityButton,
 } from '../../../../components';
-import { addCommasToNumber, capitalizeString } from '../../../../utils';
 import { useStateContext } from '../../../../context/StateContext';
+import { client, urlForImage } from '../../../../../sanity/lib/client';
 
 const Products: React.FC = () => {
   const [sortByParam, setSortByParam] = useState(dropDownData[0]);

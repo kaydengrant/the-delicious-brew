@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ColorValue } from '@sanity/color-input';
 
-import { ArrowRight } from '../../utils/icons';
+import { ArrowRight } from '../../utils';
 import { urlForImage } from '../../../sanity/lib/client';
 
 type Props = {
