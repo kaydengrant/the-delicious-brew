@@ -10,7 +10,6 @@ import {
   VerticalBanner,
   LabelBanner,
   Loading,
-  TitleBanner,
 } from '../../components';
 
 const Shop: React.FC = () => {
