@@ -13,7 +13,7 @@ const NavFooter: React.FC = () => {
           <div className="flex flex-col gap-2 px-2 lg:px-0">
             <div className="flex flex-row items-center gap-6">
               <Logo size={50} />
-              <h3>Delicious Brew</h3>
+              <h3>The Delicious Brew</h3>
             </div>
             <p>Your Gateway to Coffee Excellence.</p>
           </div>
@@ -60,7 +60,7 @@ const NavFooter: React.FC = () => {
               <li className="clickable">
                 <Link href="/about">
                   <p className="font-semibold lg:font-normal">
-                    About Delicious Brew
+                    About The Delicious Brew
                   </p>
                 </Link>
               </li>

@@ -14,10 +14,12 @@ import { GrMenu } from '@react-icons/all-files/gr/GrMenu';
 import { GrClose } from '@react-icons/all-files/gr/GrClose';
 import { BsCheck } from '@react-icons/all-files/bs/BsCheck';
 import { BsPlus } from '@react-icons/all-files/bs/BsPlus';
+import { BsConeStriped } from '@react-icons/all-files/bs/BsConeStriped';
 import { BiMinus } from '@react-icons/all-files/bi/BiMinus';
 import { ImArrowRight2 } from '@react-icons/all-files/im/ImArrowRight2';
 import { MdAddShoppingCart } from '@react-icons/all-files/md/MdAddShoppingCart';
 import { MdRemoveShoppingCart } from '@react-icons/all-files/md/MdRemoveShoppingCart';
+import { MdError } from '@react-icons/all-files/md/MdError';
 
 export {
   FaCoffee as Logo,
@@ -36,8 +38,10 @@ export {
   GrClose as Close,
   BsCheck as Check,
   BsPlus as Plus,
+  BsConeStriped as Cone,
   BiMinus as Minus,
   ImArrowRight2 as ArrowRight,
   MdAddShoppingCart as AddShoppingCart,
   MdRemoveShoppingCart as RemoveShoppingCart,
+  MdError as Error,
 };

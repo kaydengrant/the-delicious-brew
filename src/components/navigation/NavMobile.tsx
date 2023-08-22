@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-import { MugHot, Close, AngleLeft, AngleRight } from '../../utils/icons';
+import { MugHot, Close, AngleLeft, AngleRight, Cone } from '../../utils/icons';
 import { DonationButton, OutlineButton } from '../../components';
 import { categories } from './NavShop';
 
@@ -29,6 +29,11 @@ type ShopProps = {
   setLinks: React.Dispatch<React.SetStateAction<any>>;
 };
 
+type BlogProps = {
+  status: React.Dispatch<React.SetStateAction<boolean>>;
+  setScreen: React.Dispatch<React.SetStateAction<any>>;
+};
+
 type NavScreenType =
   | 'home'
   | 'shop'
@@ -47,7 +52,7 @@ const NavMobile: React.FC<Props> = ({ status }) => {
   return (
     <>
       <div className="absolute inset-0 opacity-90 z-50 bg-black " />
-      <div className="absolute right-0 top-0 flex flex-col items-center w-[80%] h-screen z-50 bg-white px-10 py-4 gap-10">
+      <div className="fixed right-0 top-0 flex flex-col items-center w-[80%] h-screen z-50 bg-white px-10 py-4 gap-10">
         <div
           onClick={() => status(false)}
           className="clickable flex flex-col self-end items-center"
@@ -107,6 +112,8 @@ const RenderNavScreen: React.FC<RenderProps> = ({
           setLinks={setLinks}
         />
       );
+    case 'blog':
+      return <NavMobileBlog status={status} setScreen={setScreen} />;
     case 'shop-espresso':
     case 'shop-drip':
     case 'shop-pour-over':
@@ -216,6 +223,26 @@ const NavMobileShopExtended: React.FC<ShopProps> = ({
             ))}
           </>
         ))}
+      </ul>
+    </div>
+  );
+};
+
+const NavMobileBlog: React.FC<BlogProps> = ({ status, setScreen }) => {
+  return (
+    <div className="flex flex-col gap-6">
+      <li onClick={() => setScreen('home')}>
+        <div className="flex flex-row justify-start items-center gap-6">
+          <AngleLeft size={20} className="text-gray" />
+          <h4>BLOG</h4>
+        </div>
+      </li>
+      <div className="bg-gray h-0.5 w-full" />
+      <ul className="flex flex-col gap-2">
+        <div className="flex flex-col items-center gap-2 text-center">
+          <Cone size={75} />
+          <h4>Under Construction</h4>
+        </div>
       </ul>
     </div>
   );
