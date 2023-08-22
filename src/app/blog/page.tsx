@@ -1,12 +1,10 @@
 'use client';
 import React from 'react';
 
+import { Construction } from '../../components';
+
 const Blog: React.FC = () => {
-  return (
-    <>
-      <h1>Under Construction</h1>
-    </>
-  );
+  return <Construction />;
 };
 
 export default Blog;

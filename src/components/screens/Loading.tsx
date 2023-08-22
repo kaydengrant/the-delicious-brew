@@ -1,7 +1,7 @@
 import React from 'react';
 import { AnimatePresence, Variants, motion } from 'framer-motion';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   const iconContainerAnim: Variants = {
     hidden: { y: 0 },
     show: {
