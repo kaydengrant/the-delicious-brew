@@ -106,7 +106,7 @@ const Products: React.FC = () => {
       )}
       <section>
         <div className="flex flex-col gap-6 text-center md:text-left">
-          <p>{capitalizedPathname}</p>
+          <p className="md:w-[65%]">{capitalizedPathname}</p>
           <h1>{categoryTitle}</h1>
           <div className="flex flex-col md:flex-row md:justify-between items-center gap-2 md:gap-0">
             <p>Results: {sanityProducts.length} Items</p>

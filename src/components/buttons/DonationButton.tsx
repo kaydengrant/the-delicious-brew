@@ -7,7 +7,11 @@ type Props = {
 const DonationButton: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <form
+        action="https://www.paypal.com/donate"
+        method="post"
+        target="_blank"
+      >
         <input type="hidden" name="business" value="RWBYTU6PBZ9FN" />
         <input type="hidden" name="amount" value="5" />
         <input type="hidden" name="no_recurring" value="1" />

@@ -67,7 +67,7 @@ const ProductFocused: React.FC = () => {
   return (
     <>
       <section>
-        <p>{capitalizedPathname}</p>
+        <p className="md:w-[65%]">{capitalizedPathname}</p>
         <section className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-10">
           <Carousel
             index={currentIndex}

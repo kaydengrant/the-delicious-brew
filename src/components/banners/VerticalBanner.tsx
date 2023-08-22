@@ -17,7 +17,7 @@ const VerticalBanner: React.FC<Props> = ({ data }) => {
   const img = urlForImage(data.image).width(1000).url();
 
   return (
-    <section className="flex flex-col items-center rounded-2xl drop-shadow-md clickable md:w-56 md:h-[300px] my-0 md:my-8 min-w-[200px]">
+    <section className="flex flex-col items-center rounded-2xl drop-shadow-md clickable w-44 lg:w-56 md:h-[300px] my-0 md:my-8">
       <div
         style={{ backgroundColor: data.color.hex }}
         className="flex justify-center w-full py-4 md:py-2 rounded-xl md:rounded-t-xl md:rounded-b-none"

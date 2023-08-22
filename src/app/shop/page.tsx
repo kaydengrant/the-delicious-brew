@@ -141,7 +141,7 @@ const Shop: React.FC = () => {
         <h2 className="text-center md:text-left">
           Explore Trending Blog Posts
         </h2>
-        <div className="flex flex-row items-center overflow-x-auto gap-x-4 scrollbar snap-x">
+        <div className="flex flex-row items-center overflow-x-auto gap-x-6 scrollbar snap-x">
           {sanityBlogBanners.map((item: any) => {
             return (
               <div key={item._id} className="snap-start">
