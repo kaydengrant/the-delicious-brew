@@ -47,7 +47,7 @@ const SimilarProducts: React.FC<Props> = ({ category }) => {
                 className="flex flex-col gap-2 max-w-[200px] mx-2"
               >
                 <div
-                  className={`flex relative rounded-xl w-[200px] h-[200px] min-w-[200px] min-h-[200px] p-2 drop-shadow-sm ${
+                  className={`flex relative rounded-xl w-[200px] h-[200px] min-w-[200px] min-h-[200px] p-2 drop-shadow-sm border-2 border-gray ${
                     index % 3 == 0
                       ? 'bg-blue'
                       : index % 3 == 1
