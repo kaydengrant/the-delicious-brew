@@ -10,6 +10,7 @@ import {
   VerticalBanner,
   LabelBanner,
   Loading,
+  InViewAnimationWrapper,
 } from '../../components';
 
 const Shop: React.FC = () => {
@@ -75,81 +76,89 @@ const Shop: React.FC = () => {
 
   return (
     <>
-      <section>
-        <div className="flex flex-col-reverse lg:flex-row items-center lg:gap-4">
-          <div className="flex flex-row lg:flex-col gap-4">
-            <button
-              onClick={() => setHeroCurrentIndex(0)}
-              className={`w-3 h-3 ${
-                heroCurrentIndex == 0 ? 'bg-black' : 'bg-gray'
-              } rounded-full clickable`}
-            />
-            <button
-              onClick={() => setHeroCurrentIndex(1)}
-              className={`w-3 h-3 ${
-                heroCurrentIndex == 1 ? 'bg-black' : 'bg-gray'
-              } rounded-full clickable`}
-            />
-            <button
-              onClick={() => setHeroCurrentIndex(2)}
-              className={`w-3 h-3 ${
-                heroCurrentIndex == 2 ? 'bg-black' : 'bg-gray'
-              } rounded-full clickable`}
-            />
+      <InViewAnimationWrapper>
+        <section>
+          <div className="flex flex-col-reverse items-center lg:gap-4">
+            <div className="flex flex-row gap-4">
+              <button
+                onClick={() => setHeroCurrentIndex(0)}
+                className={`w-3 h-3 ${
+                  heroCurrentIndex == 0 ? 'bg-black' : 'bg-gray'
+                } rounded-full clickable`}
+              />
+              <button
+                onClick={() => setHeroCurrentIndex(1)}
+                className={`w-3 h-3 ${
+                  heroCurrentIndex == 1 ? 'bg-black' : 'bg-gray'
+                } rounded-full clickable`}
+              />
+              <button
+                onClick={() => setHeroCurrentIndex(2)}
+                className={`w-3 h-3 ${
+                  heroCurrentIndex == 2 ? 'bg-black' : 'bg-gray'
+                } rounded-full clickable`}
+              />
+            </div>
+            <div className="w-full">
+              {sanityProductBanners
+                .slice(heroCurrentIndex, heroCurrentIndex + 1)
+                .map((item: any) => (
+                  <ProductBanner
+                    key={item._id}
+                    data={sanityProductBanners[heroCurrentIndex]}
+                    direction="left"
+                    color={
+                      heroCurrentIndex % 3 == 0
+                        ? 'bg-blue'
+                        : heroCurrentIndex % 3 == 1
+                        ? 'bg-green'
+                        : 'bg-brown'
+                    }
+                  />
+                ))}
+            </div>
           </div>
-          <div className="lg:flex-1">
-            {sanityProductBanners
-              .slice(heroCurrentIndex, heroCurrentIndex + 1)
-              .map((item: any) => (
-                <ProductBanner
-                  key={item._id}
-                  data={sanityProductBanners[heroCurrentIndex]}
-                  direction="left"
-                  color={
-                    heroCurrentIndex % 3 == 0
-                      ? 'bg-blue'
-                      : heroCurrentIndex % 3 == 1
-                      ? 'bg-green'
-                      : 'bg-brown'
-                  }
-                />
-              ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      </InViewAnimationWrapper>
       <Divider data={sanityDividers[0]} />
-      <section>
-        <h2 className="text-center md:text-left mb-6 md:mb-0">
-          Browse Our Top Categories
-        </h2>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {sanityCategoryBanners.map((item: any) => (
-            <Link key={item._id} href={`/shop/products/${item.slug.current}`}>
-              <VerticalBanner data={item} />
-            </Link>
-          ))}
-        </div>
-      </section>
-      <ProductBanner
-        data={sanityCreditBanners[0]}
-        direction="right"
-        color="bg-green"
-        flipText
-      />
-      <section>
-        <h2 className="text-center md:text-left">
-          Explore Trending Blog Posts
-        </h2>
-        <div className="flex flex-row items-center overflow-x-auto gap-x-6 scrollbar snap-x">
-          {sanityBlogBanners.map((item: any) => {
-            return (
-              <div key={item._id} className="snap-start">
-                <LabelBanner data={item} />
-              </div>
-            );
-          })}
-        </div>
-      </section>
+      <InViewAnimationWrapper>
+        <section>
+          <h2 className="text-center md:text-left mb-6 md:mb-0">
+            Browse Our Top Categories
+          </h2>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {sanityCategoryBanners.map((item: any) => (
+              <Link key={item._id} href={`/shop/products/${item.slug.current}`}>
+                <VerticalBanner data={item} />
+              </Link>
+            ))}
+          </div>
+        </section>
+      </InViewAnimationWrapper>
+      <InViewAnimationWrapper>
+        <ProductBanner
+          data={sanityCreditBanners[0]}
+          direction="right"
+          color="bg-green"
+          flipText
+        />
+      </InViewAnimationWrapper>
+      <InViewAnimationWrapper>
+        <section>
+          <h2 className="text-center md:text-left">
+            Explore Trending Blog Posts
+          </h2>
+          <div className="flex flex-row items-center overflow-x-auto gap-x-6 scrollbar snap-x">
+            {sanityBlogBanners.map((item: any) => {
+              return (
+                <div key={item._id} className="snap-start">
+                  <LabelBanner data={item} />
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      </InViewAnimationWrapper>
       <NavFooter />
     </>
   );

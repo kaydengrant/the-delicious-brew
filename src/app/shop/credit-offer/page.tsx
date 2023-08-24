@@ -1,10 +1,14 @@
 'use client';
 import React from 'react';
 
-import { Construction } from '../../../components';
+import { Construction, InViewAnimationWrapper } from '../../../components';
 
 const CreditOffer: React.FC = () => {
-  return <Construction />;
+  return (
+    <InViewAnimationWrapper>
+      <Construction />
+    </InViewAnimationWrapper>
+  );
 };
 
 export default CreditOffer;

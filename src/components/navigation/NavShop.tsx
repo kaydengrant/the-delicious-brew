@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-import { MugHot, Close } from '../../utils';
+import { MugHot, Close, navBarExtendedAnim } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 
 type Props = {
@@ -13,11 +14,14 @@ const ShopNav: React.FC<Props> = ({ status }) => {
   const [links, setLinks] = useState([categories[0]]);
 
   return (
-    <div
+    <motion.div
+      variants={navBarExtendedAnim}
+      initial="hidden"
+      animate="show"
       onMouseLeave={() => status(false)}
-      className="flex flex-row justify-center w-screen h-[400px] bg-white"
+      className="flex flex-row justify-center w-screen h-[400px] bg-white z-[-1]"
     >
-      <nav className="flex flex-col z-50 w-full lg:w-[1000px] py-6">
+      <nav className="flex flex-col w-full lg:w-[1000px] py-6">
         <ul className="flex flex-row justify-between">
           <li onClick={() => status(false)}>
             <Link href="/shop">
@@ -84,7 +88,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
           </div>
         </div>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 

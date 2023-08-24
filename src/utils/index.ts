@@ -23,6 +23,15 @@ export {
   Error,
 } from './icons';
 
+export {
+  loadingContainerAnim,
+  loadingSteamContainerAnim,
+  loadingSteamAnim,
+  heroCarouselAnim,
+  navBarExtendedAnim,
+  navBarMobileAnim,
+} from './animations';
+
 export const addCommasToNumber = (num: number) => {
   return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

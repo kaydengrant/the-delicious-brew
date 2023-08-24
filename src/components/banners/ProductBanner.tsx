@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Slug } from 'sanity';
 
-import { ArrowRight } from '../../utils';
+import { ArrowRight, heroCarouselAnim } from '../../utils';
 import { urlForImage } from '../../../sanity/lib/client';
 import { OutlineButton } from '../../components';
+import { motion } from 'framer-motion';
 
 type Props = {
   data: {
@@ -58,7 +59,10 @@ const ProductBanner: React.FC<Props> = ({
   }, [data]);
 
   return (
-    <section
+    <motion.section
+      variants={heroCarouselAnim}
+      initial="hidden"
+      animate="show"
       className={`flex flex-col-reverse ${
         direction === 'left' ? 'md:flex-row' : 'md:flex-row-reverse'
       }  justify-center md:justify-between items-center ${color} rounded-2xl p-6 sm:px-10 drop-shadow-md md:h-72`}
@@ -93,13 +97,13 @@ const ProductBanner: React.FC<Props> = ({
           loader={() => img}
           src={img}
           alt="Product banner image"
-          className="drop-shadow-xl object-contain"
+          className="drop-shadow-xl object-contain p-2"
           loading="lazy"
           fill
           unoptimized
         />
       </div>
-    </section>
+    </motion.section>
   );
 };
 

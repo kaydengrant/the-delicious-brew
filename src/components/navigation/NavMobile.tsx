@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-import { MugHot, Close, AngleLeft, AngleRight, Cone } from '../../utils';
+import {
+  MugHot,
+  Close,
+  AngleLeft,
+  AngleRight,
+  Cone,
+  navBarMobileAnim,
+} from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 import { categories } from './NavShop';
 
@@ -50,46 +58,48 @@ const NavMobile: React.FC<Props> = ({ status }) => {
   const [links, setLinks] = useState([categories[0]]);
 
   return (
-    <>
-      <div className="absolute inset-0 opacity-90 z-50 bg-black " />
-      <div className="fixed right-0 top-0 flex flex-col items-center w-[80%] h-screen z-50 bg-white px-10 py-4 gap-10">
-        <div
-          onClick={() => status(false)}
-          className="clickable flex flex-col self-end items-center"
-        >
-          <Close size={20} />
-          <p>Close</p>
-        </div>
-        <div className="w-full no-scrollbar overflow-y-scroll">
-          <nav className="flex flex-col z-50 w-full items-center gap-6">
-            <ul className="flex w-full flex-col gap-2">
-              {
-                <RenderNavScreen
-                  status={status}
-                  setScreen={setNavsetScreen}
-                  current={navsetScreen}
-                  links={links}
-                  setLinks={setLinks}
-                />
-              }
-            </ul>
-            <div className="bg-gray h-0.5 w-full" />
-            <ul className="flex w-full flex-col gap-1">
-              <li className="clickable">
-                <Link href="/about">
-                  <p>About Delicious Brew</p>
-                </Link>
-              </li>
-              <li>
-                <DonationButton>
-                  <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
-                </DonationButton>
-              </li>
-            </ul>
-          </nav>
-        </div>
+    <motion.div
+      variants={navBarMobileAnim}
+      initial="hidden"
+      animate="show"
+      className="fixed right-0 top-0 flex flex-col items-center w-[80%] h-screen z-50 bg-white px-10 py-4 gap-10"
+    >
+      <div
+        onClick={() => status(false)}
+        className="clickable flex flex-col self-end items-center"
+      >
+        <Close size={20} />
+        <p>Close</p>
       </div>
-    </>
+      <div className="w-full no-scrollbar overflow-y-scroll">
+        <nav className="flex flex-col z-50 w-full items-center gap-6">
+          <ul className="flex w-full flex-col gap-2">
+            {
+              <RenderNavScreen
+                status={status}
+                setScreen={setNavsetScreen}
+                current={navsetScreen}
+                links={links}
+                setLinks={setLinks}
+              />
+            }
+          </ul>
+          <div className="bg-gray h-0.5 w-full" />
+          <ul className="flex w-full flex-col gap-1">
+            <li className="clickable">
+              <Link href="/about">
+                <p>About Delicious Brew</p>
+              </Link>
+            </li>
+            <li>
+              <DonationButton>
+                <OutlineButton text="Buy me a Coffee" Icon={MugHot} />
+              </DonationButton>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </motion.div>
   );
 };
 

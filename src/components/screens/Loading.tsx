@@ -1,44 +1,13 @@
 import React from 'react';
-import { AnimatePresence, Variants, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+
+import {
+  loadingContainerAnim,
+  loadingSteamContainerAnim,
+  loadingSteamAnim,
+} from '../../utils';
 
 const Loading: React.FC = () => {
-  const iconContainerAnim: Variants = {
-    hidden: { y: 0 },
-    show: {
-      y: 10,
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-        repeatType: 'mirror',
-        type: 'Spring',
-      },
-    },
-  };
-
-  const steamContainerAnim: Variants = {
-    show: {
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const steamAnim: Variants = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        repeatType: 'mirror',
-        repeatDelay: 1,
-      },
-    },
-  };
-
   return (
     <div className="absolute inset-0 z-50 bg-white">
       <AnimatePresence>
@@ -48,7 +17,7 @@ const Loading: React.FC = () => {
             width="300"
             height="50vh"
             viewBox="0 0 1000 1000"
-            variants={iconContainerAnim}
+            variants={loadingContainerAnim}
             initial="hidden"
             animate="show"
           >
@@ -128,24 +97,24 @@ const Loading: React.FC = () => {
               d="M281.693 87.978c3.011-2.275 6.709-3.413 10.075-1.712a10.264 10.264 0 0 1 5.373 7.5c.577 3.886-1.572 7.612-3.868 10.625a39.33 39.33 0 0 1-9.477 8.589 73.212 73.212 0 0 1-12.647 6.71 2.48 2.48 0 0 0-1.676 2.952 2.414 2.414 0 0 0 2.952 1.676c9.36-3.9 18.665-9.139 24.886-17.361 2.919-3.859 5.219-8.541 4.59-13.493a15.05 15.05 0 0 0-7.068-10.992c-5-2.987-11.036-2.062-15.563 1.357a2.478 2.478 0 0 0-.861 3.284 2.417 2.417 0 0 0 3.284.861Z"
             />
             <motion.g
-              variants={steamContainerAnim}
+              variants={loadingSteamContainerAnim}
               initial="hidden"
               animate="show"
             >
               <motion.path
-                variants={steamAnim}
+                variants={loadingSteamAnim}
                 fill="#201714"
                 transform="matrix(.7118 0 0 1.3478 293.756 73.8)"
                 d="M102.765 91.563a5.449 5.449 0 0 0 3.084.952h.005a5.492 5.492 0 0 0 5.282-6.967c-1.887-8.316-1.031-14.948 2.543-19.711 4.96-6.605 7.153-15.104 5.868-22.732-1.149-6.838-4.825-12.522-10.628-16.438-1.827-1.234-4.306-1.249-6.19.035-1.851 1.28-2.739 3.609-2.216 5.763 2.068 8.823.244 14.22-4.627 22.979-3.33 5.99-4.687 12.734-3.82 18.99.989 7.173 4.699 13.103 10.699 17.129z"
               />
               <motion.path
-                variants={steamAnim}
+                variants={loadingSteamAnim}
                 fill="#201714"
                 transform="matrix(.715 0 0 1.3131 389.725 70.095)"
                 d="M151.444 95.421a5.795 5.795 0 0 0 3.268 1.001h.011a5.836 5.836 0 0 0 5.608-7.434c-2.695-11.825-1.439-21.313 3.733-28.204 6.484-8.638 9.354-19.733 7.677-29.677-1.487-8.856-6.248-16.217-13.755-21.278-1.948-1.321-4.628-1.314-6.578.026a5.804 5.804 0 0 0-2.369 6.132c2.918 12.451.244 20.377-6.455 32.426-4.358 7.839-6.136 16.654-5.008 24.821 1.283 9.285 6.085 16.961 13.868 22.187z"
               />
               <motion.path
-                variants={steamAnim}
+                variants={loadingSteamAnim}
                 fill="#201714"
                 transform="matrix(.7118 0 0 1.3478 485.974 73.802)"
                 d="M200.501 91.563a5.449 5.449 0 0 0 3.084.952h.005a5.492 5.492 0 0 0 5.281-6.971c-1.885-8.314-1.029-14.945 2.545-19.707 4.959-6.604 7.153-15.104 5.868-22.732-1.15-6.838-4.826-12.522-10.628-16.438-1.828-1.233-4.311-1.246-6.19.035-1.851 1.28-2.739 3.609-2.216 5.763 2.068 8.822.244 14.219-4.627 22.979-3.33 5.989-4.687 12.734-3.821 18.99.99 7.173 4.7 13.103 10.699 17.129z"

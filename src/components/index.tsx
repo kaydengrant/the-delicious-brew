@@ -22,3 +22,4 @@ export { default as DropDownButton } from './buttons/DropDownButton';
 export { default as QuantityButton } from './buttons/QuantityButton';
 export { default as DonationButton } from './buttons/DonationButton';
 export { default as ToastProvider } from './ToastProvider';
+export { default as InViewAnimationWrapper } from './InViewAnimationWrapper';

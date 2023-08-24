@@ -2,7 +2,13 @@
 import React, { useState, useEffect } from 'react';
 
 import { client } from '../../sanity/lib/client';
-import { TitleBanner, NavFooter, Divider, Loading } from '../components';
+import {
+  TitleBanner,
+  NavFooter,
+  Divider,
+  Loading,
+  InViewAnimationWrapper,
+} from '../components';
 
 const Home = () => {
   const [sanityBanners, setSanityBanners] = useState(null);
@@ -27,9 +33,23 @@ const Home = () => {
 
   return (
     <>
-      <TitleBanner data={sanityBanners[0]} direction="left" color="bg-green" />
-      <Divider data={sanityDividers[0]} />
-      <TitleBanner data={sanityBanners[1]} direction="right" color="bg-brown" />
+      <InViewAnimationWrapper>
+        <TitleBanner
+          data={sanityBanners[0]}
+          direction="left"
+          color="bg-green"
+        />
+      </InViewAnimationWrapper>
+      <InViewAnimationWrapper>
+        <Divider data={sanityDividers[0]} />
+      </InViewAnimationWrapper>
+      <InViewAnimationWrapper>
+        <TitleBanner
+          data={sanityBanners[1]}
+          direction="right"
+          color="bg-brown"
+        />
+      </InViewAnimationWrapper>
       <NavFooter />
     </>
   );
