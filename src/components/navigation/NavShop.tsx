@@ -19,7 +19,7 @@ const ShopNav: React.FC<Props> = ({ status }) => {
       initial="hidden"
       animate="show"
       onMouseLeave={() => status(false)}
-      className="flex flex-row justify-center w-screen h-[400px] bg-white z-[-1]"
+      className="flex flex-row justify-center w-screen h-[400px] bg-white z-[-1] px-2 lg:px-0"
     >
       <nav className="flex flex-col w-full lg:w-[1000px] py-6">
         <ul className="flex flex-row justify-between">

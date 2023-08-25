@@ -20,9 +20,10 @@ import { ImArrowRight2 } from '@react-icons/all-files/im/ImArrowRight2';
 import { MdAddShoppingCart } from '@react-icons/all-files/md/MdAddShoppingCart';
 import { MdRemoveShoppingCart } from '@react-icons/all-files/md/MdRemoveShoppingCart';
 import { MdError } from '@react-icons/all-files/md/MdError';
+import CappuccinoIcon from '../components/Logo';
 
 export {
-  FaCoffee as Logo,
+  CappuccinoIcon as Logo,
   FaMugHot as MugHot,
   FaAngleLeft as AngleLeft,
   FaAngleRight as AngleRight,
