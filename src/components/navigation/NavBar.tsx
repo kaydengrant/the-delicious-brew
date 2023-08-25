@@ -48,7 +48,7 @@ const NavBar: React.FC = () => {
                 href="/"
                 className={`${showSearchBar ? 'hidden sm:flex' : 'flex'}`}
               >
-                <Logo size={50} />
+                <Logo />
               </Link>
               <ul className="hidden md:flex flex-row items-center gap-4">
                 <li
