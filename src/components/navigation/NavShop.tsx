@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-import { MugHot, Close, navBarExtendedAnim } from '../../utils';
+import { MugHot, Close, navBarExtendedAnim, navCategories } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 
 const ShopNav: React.FC<Props> = ({ status }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [links, setLinks] = useState([categories[0]]);
+  const [links, setLinks] = useState([navCategories[0]]);
 
   return (
     <motion.div
@@ -41,11 +41,11 @@ const ShopNav: React.FC<Props> = ({ status }) => {
         <div className="flex flex-row justify-between">
           <div className="flex flex-row">
             <ul className="flex flex-col">
-              {categories.map((category, index) => (
+              {navCategories.map((category, index) => (
                 <li
                   key={category.key}
                   onClick={() => {
-                    setLinks([categories[index]]), setCurrentIndex(index);
+                    setLinks([navCategories[index]]), setCurrentIndex(index);
                   }}
                   className={`clickable flex px-4 py-1 ${
                     currentIndex == index ? 'bg-gray font-bold' : 'bg-white'
@@ -91,113 +91,5 @@ const ShopNav: React.FC<Props> = ({ status }) => {
     </motion.div>
   );
 };
-
-export const categories = [
-  {
-    key: 1,
-    name: 'espresso',
-    title: 'Espresso',
-    links: [
-      { key: 10, title: 'All Espresso', to: '/shop/products/espresso' },
-      { key: 11, title: 'Machines', to: '/shop/products/espresso-machines' },
-      {
-        key: 12,
-        title: 'Additional Tools & Accessories',
-        to: '/shop/products/espresso-accessories',
-      },
-      {
-        key: 13,
-        title: 'Recommended Beans',
-        to: '/shop/products/espresso-beans',
-      },
-    ],
-  },
-  {
-    key: 2,
-    name: 'drip',
-    title: 'Drip',
-    links: [
-      { key: 20, title: 'All Drip', to: '/shop/products/drip' },
-      { key: 21, title: 'Machines', to: '/shop/products/drip-machines' },
-      {
-        key: 22,
-        title: 'Accessories',
-        to: '/shop/products/drip-accessories',
-      },
-      { key: 23, title: 'Recommended Beans', to: '/shop/products/drip-beans' },
-    ],
-  },
-  {
-    key: 3,
-    name: 'pour-over',
-    title: 'Pour Over',
-    links: [
-      { key: 30, title: 'All Pour Over', to: '/shop/products/pour-over' },
-      { key: 31, title: 'Brewers', to: '/shop/products/pour-over-brewers' },
-      {
-        key: 32,
-        title: 'Additional Tools & Accessories',
-        to: '/shop/products/pour-over-accessories',
-      },
-      {
-        key: 33,
-        title: 'Recommended Beans',
-        to: '/shop/products/pour-over-beans',
-      },
-    ],
-  },
-  {
-    key: 4,
-    name: 'press',
-    title: 'Press',
-    links: [
-      { key: 40, title: 'All Press', to: '/shop/products/press' },
-      { key: 41, title: 'Brewers', to: '/shop/products/press-brewers' },
-      {
-        key: 42,
-        title: 'Additional Tools & Accessories',
-        to: '/shop/products/press-accessories',
-      },
-      { key: 43, title: 'Recommended Beans', to: '/shop/products/press-beans' },
-    ],
-  },
-  {
-    key: 5,
-    name: 'beans',
-    title: 'Beans',
-    links: [
-      { key: 50, title: 'All Beans', to: '/shop/products/beans' },
-      { key: 51, title: 'Whole Beans', to: '/shop/products/beans-whole' },
-      { key: 52, title: 'Pre-Ground Beans', to: '/shop/products/beans-ground' },
-    ],
-  },
-  {
-    key: 6,
-    name: 'accessories',
-    title: 'Additional Tools & Accessories',
-    links: [
-      { key: 60, title: 'All Accessories', to: '/shop/products/accessories' },
-      { key: 61, title: 'Grinders', to: '/shop/products/accessories-grinders' },
-      {
-        key: 62,
-        title: 'Cleaning Supplies',
-        to: '/shop/products/accessories-cleaning',
-      },
-      { key: 63, title: 'Filters', to: '/shop/products/accessories-filters' },
-      {
-        key: 64,
-        title: 'Espresso Accessories',
-        to: '/shop/products/accessories-espresso',
-      },
-      { key: 65, title: 'Kettles', to: '/shop/products/accessories-kettles' },
-      { key: 66, title: 'Cups & Mugs', to: '/shop/products/accessories-cups' },
-      {
-        key: 67,
-        title: 'Scales & Measuring',
-        to: '/shop/products/accessories-measuring',
-      },
-    ],
-  },
-];
 
 export default ShopNav;

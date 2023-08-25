@@ -217,7 +217,7 @@ const Products: React.FC = () => {
           </div>
         </InViewAnimationWrapper>
         <div className="flex flex-row justify-center">
-          {numberOfItems <= sanityProducts.length && (
+          {numberOfItems < sanityProducts.length && (
             <OutlineButton
               text="Load More"
               onClickFunction={() => setNumberOfItems(numberOfItems + 8)}

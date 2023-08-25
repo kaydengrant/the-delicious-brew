@@ -9,9 +9,9 @@ import {
   AngleRight,
   Cone,
   navBarMobileAnim,
+  navCategories,
 } from '../../utils';
 import { DonationButton, OutlineButton } from '../../components';
-import { categories } from './NavShop';
 
 type Props = {
   status: React.Dispatch<React.SetStateAction<boolean>>;
@@ -55,7 +55,7 @@ type NavScreenType =
 
 const NavMobile: React.FC<Props> = ({ status }) => {
   const [navsetScreen, setNavsetScreen] = useState<NavScreenType>('home');
-  const [links, setLinks] = useState([categories[0]]);
+  const [links, setLinks] = useState([navCategories[0]]);
 
   return (
     <motion.div
@@ -179,11 +179,12 @@ const NavMobileShop: React.FC<ShopProps> = ({ setScreen, setLinks }) => {
       </li>
       <div className="bg-gray h-0.5 w-full" />
       <ul className="flex flex-col gap-2">
-        {categories.map((category, index) => (
+        {navCategories.map((category, index) => (
           <li
             key={category.key}
             onClick={() => {
-              setScreen(`shop-${category.name}`), setLinks([categories[index]]);
+              setScreen(`shop-${category.name}`),
+                setLinks([navCategories[index]]);
             }}
             className="flex flex-row justify-between items-center"
           >
@@ -206,7 +207,7 @@ const NavMobileShopExtended: React.FC<ShopProps> = ({
     <div className="flex flex-col gap-6">
       <li
         onClick={() => {
-          setScreen('shop'), setLinks([categories[0]]);
+          setScreen('shop'), setLinks([navCategories[0]]);
         }}
       >
         <Link
