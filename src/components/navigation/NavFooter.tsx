@@ -12,7 +12,7 @@ const NavFooter: React.FC = () => {
         <div className="flex flex-col lg:flex-row justify-between px-2 gap-4 lg:gap-0">
           <div className="flex flex-col gap-2 px-2 lg:px-0">
             <div className="flex flex-row items-center gap-6">
-              <Logo size={50} />
+              <Logo />
               <h3>The Delicious Brew</h3>
             </div>
             <p>Your Gateway to Coffee Excellence.</p>
