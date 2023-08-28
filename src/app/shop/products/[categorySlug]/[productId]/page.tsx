@@ -13,6 +13,7 @@ import {
   Truck,
   BoxOpen,
   Lock,
+  Warning,
 } from '../../../../../utils';
 import {
   NavFooter,
@@ -23,6 +24,7 @@ import {
   SimilarProducts,
   Loading,
   InViewAnimationWrapper,
+  AlertBanner,
 } from '../../../../../components';
 import { useStateContext } from '../../../../../context/StateContext';
 import { client, urlForImage } from '../../../../../../sanity/lib/client';
@@ -68,6 +70,13 @@ const ProductFocused: React.FC = () => {
 
   return (
     <>
+      <AlertBanner
+        text={[
+          'Products are not purchasable',
+          'This is only a portfolio project',
+        ]}
+        Icon={Warning}
+      />
       <section>
         <p className="md:w-[65%]">{capitalizedPathname}</p>
         <InViewAnimationWrapper className="w-full">

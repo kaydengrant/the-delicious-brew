@@ -20,6 +20,8 @@ import { ImArrowRight2 } from '@react-icons/all-files/im/ImArrowRight2';
 import { MdAddShoppingCart } from '@react-icons/all-files/md/MdAddShoppingCart';
 import { MdRemoveShoppingCart } from '@react-icons/all-files/md/MdRemoveShoppingCart';
 import { MdError } from '@react-icons/all-files/md/MdError';
+import { TiWarningOutline } from '@react-icons/all-files/ti/TiWarningOutline';
+
 import CappuccinoIcon from '../components/Logo';
 
 export {
@@ -45,4 +47,5 @@ export {
   MdAddShoppingCart as AddShoppingCart,
   MdRemoveShoppingCart as RemoveShoppingCart,
   MdError as Error,
+  TiWarningOutline as Warning,
 };

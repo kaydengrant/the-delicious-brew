@@ -11,7 +11,9 @@ import {
   LabelBanner,
   Loading,
   InViewAnimationWrapper,
+  AlertBanner,
 } from '../../components';
+import { Warning } from '../../utils';
 
 const Shop: React.FC = () => {
   const [heroCurrentIndex, setHeroCurrentIndex] = useState(0);
@@ -76,6 +78,13 @@ const Shop: React.FC = () => {
 
   return (
     <>
+      <AlertBanner
+        text={[
+          'Products are not purchasable',
+          'This is only a portfolio project',
+        ]}
+        Icon={Warning}
+      />
       <InViewAnimationWrapper>
         <section>
           <div className="flex flex-col-reverse items-center lg:gap-4">

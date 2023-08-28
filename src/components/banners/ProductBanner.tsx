@@ -41,12 +41,12 @@ const ProductBanner: React.FC<Props> = ({
           break;
         case 'hario-v60-ceramic':
           setLink(
-            '/shop/products/pour-over-brewers/?productName=Hario%V%2060%20Ceramic'
+            '/shop/products/pour-over-brewers/172242f4-af70-419b-b0e0-9a88739d1cec?productName=V60%20Ceramic%20Coffee%20Dripper%2001%20-%20White'
           );
           break;
-        case 'aero-press-classic':
+        case 'aero-press-original':
           setLink(
-            '/shop/products/press-brewers/?productName=Aero%20Press%20Classic'
+            '/shop/products/press-brewers/c856d3cb-1d06-473f-b389-0a4cc0a74e84?productName=AeroPress%20Coffee%20Maker%20-%20Original'
           );
           break;
         case 'credit-offer':

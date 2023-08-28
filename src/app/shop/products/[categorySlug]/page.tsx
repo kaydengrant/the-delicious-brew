@@ -11,6 +11,7 @@ import {
   Cart,
   Check,
   Close,
+  Warning,
 } from '../../../../utils';
 import {
   DropDownButton,
@@ -19,6 +20,7 @@ import {
   Loading,
   QuantityButton,
   InViewAnimationWrapper,
+  AlertBanner,
 } from '../../../../components';
 import { useStateContext } from '../../../../context/StateContext';
 import { client, urlForImage } from '../../../../../sanity/lib/client';
@@ -104,6 +106,13 @@ const Products: React.FC = () => {
 
   return (
     <>
+      <AlertBanner
+        text={[
+          'Products are not purchasable',
+          'This is only a portfolio project',
+        ]}
+        Icon={Warning}
+      />
       <section>
         <div className="flex flex-col gap-6 text-center md:text-left">
           <p className="md:w-[65%]">{capitalizedPathname}</p>

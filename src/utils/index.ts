@@ -21,6 +21,7 @@ export {
   AddShoppingCart,
   RemoveShoppingCart,
   Error,
+  Warning,
 } from './icons';
 
 export {
