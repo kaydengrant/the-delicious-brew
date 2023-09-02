@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Slug } from 'sanity';
@@ -29,24 +29,28 @@ const ProductBanner: React.FC<Props> = ({
   color,
 }) => {
   const [link, setLink] = useState('');
-  const img = urlForImage(data.image).width(1000).url();
+
+  const img = useMemo(() => {
+    if (!data) return '';
+    return urlForImage(data.image).width(1000).url();
+  }, [data]);
 
   useEffect(() => {
     const handleLink = () => {
       switch (data.slug.current) {
         case 'breville-barista-touch':
           setLink(
-            '/shop/products/espresso-machines/3928bdad-d1e5-4918-8f0a-fa075118f77e?productName=Breville%20Barista%20Touch'
+            '/shop/products/espresso-machines/3928bdad-d1e5-4918-8f0a-fa075118f77e'
           );
           break;
         case 'hario-v60-ceramic':
           setLink(
-            '/shop/products/pour-over-brewers/172242f4-af70-419b-b0e0-9a88739d1cec?productName=V60%20Ceramic%20Coffee%20Dripper%2001%20-%20White'
+            '/shop/products/pour-over-brewers/172242f4-af70-419b-b0e0-9a88739d1cec'
           );
           break;
         case 'aero-press-original':
           setLink(
-            '/shop/products/press-brewers/c856d3cb-1d06-473f-b389-0a4cc0a74e84?productName=AeroPress%20Coffee%20Maker%20-%20Original'
+            '/shop/products/press-brewers/c856d3cb-1d06-473f-b389-0a4cc0a74e84'
           );
           break;
         case 'credit-offer':

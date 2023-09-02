@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import { Slug } from 'sanity';
 
@@ -24,7 +24,10 @@ type Props = {
 const CartItem: React.FC<Props> = ({ data, index, quantity }) => {
   const { toggleCartItemQuantity, onRemove } = useStateContext();
 
-  const img = urlForImage(data.image[0]).width(1000).url();
+  const img = useMemo(() => {
+    if (!data) return '';
+    return urlForImage(data.image[0]).width(1000).url();
+  }, [data]);
 
   return (
     <section className="flex flex-col md:flex-row items-center justify-between bg-white p-4 rounded-2xl drop-shadow-xl border-2 border-gray gap-2 w-[350px] md:w-full md:h-[250px] lg:h-[300px]">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import { ColorValue } from '@sanity/color-input';
 
@@ -14,7 +14,10 @@ type Props = {
 };
 
 const VerticalBanner: React.FC<Props> = ({ data }) => {
-  const img = urlForImage(data.image).width(1000).url();
+  const img = useMemo(() => {
+    if (!data) return '';
+    return urlForImage(data.image).width(1000).url();
+  }, [data]);
 
   return (
     <section className="flex flex-col items-center rounded-2xl drop-shadow-md clickable w-44 lg:w-56 md:h-[300px] my-0 md:my-8">

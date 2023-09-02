@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ColorValue } from '@sanity/color-input';
@@ -17,7 +17,10 @@ type Props = {
 };
 
 const LabelBanner: React.FC<Props> = ({ data }) => {
-  const img = urlForImage(data.image).width(1000).url();
+  const img = useMemo(() => {
+    if (!data) return '';
+    return urlForImage(data.image).width(1000).url();
+  }, [data]);
 
   return (
     <section className="flex flex-col items-center rounded-2xl drop-shadow-md w-[200px] h-[125px] sm:w-[325px] sm:h-[250px]">

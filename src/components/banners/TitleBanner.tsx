@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Slug } from 'sanity';
@@ -21,7 +21,11 @@ type Props = {
 
 const TitleBanner: React.FC<Props> = ({ data, direction, color }) => {
   const [link, setLink] = useState('');
-  const img = urlForImage(data.image).width(1400).url();
+
+  const img = useMemo(() => {
+    if (!data) return '';
+    return urlForImage(data.image).width(1000).url();
+  }, [data]);
 
   useEffect(() => {
     const handleLink = () => {
