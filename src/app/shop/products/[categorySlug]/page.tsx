@@ -107,10 +107,7 @@ const Products: React.FC = () => {
   return (
     <>
       <AlertBanner
-        text={[
-          'Products are not purchasable',
-          'This is only a portfolio project',
-        ]}
+        text={['Products are not purchasable', 'This is a mock website']}
         Icon={Warning}
       />
       <section>
@@ -139,7 +136,7 @@ const Products: React.FC = () => {
               return (
                 <Link
                   key={item._id}
-                  href={`/shop/products/${currentCategory}/${item._id}?productName=${item.name}`}
+                  href={`/shop/products/${currentCategory}/${item._id}`}
                 >
                   {index !== quickAddIndex ? (
                     <section

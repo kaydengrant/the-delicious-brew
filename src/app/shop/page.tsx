@@ -79,10 +79,7 @@ const Shop: React.FC = () => {
   return (
     <>
       <AlertBanner
-        text={[
-          'Products are not purchasable',
-          'This is only a portfolio project',
-        ]}
+        text={['Products are not purchasable', 'This is a mock website']}
         Icon={Warning}
       />
       <InViewAnimationWrapper>

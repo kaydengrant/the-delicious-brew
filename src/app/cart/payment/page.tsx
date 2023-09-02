@@ -18,7 +18,7 @@ const Payment: React.FC = () => {
   return (
     <InViewAnimationWrapper>
       <section className="flex flex-col items-center text-center gap-4">
-        <h1>Sorry, this is only a portfolio project.</h1>
+        <h1>Sorry, this is a mock website.</h1>
         <h3>
           While the items are real, you cannot purchase them through The
           Delicious Brew
