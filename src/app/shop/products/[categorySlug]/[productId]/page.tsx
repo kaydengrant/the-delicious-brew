@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import {
   addCommasToNumber,
@@ -36,15 +36,8 @@ const ProductFocused: React.FC = () => {
   const { decQty, incQty, qty, setQty, onAdd } = useStateContext();
 
   const pathname = usePathname().split('/');
-  const searchParams = useSearchParams();
-  const productId = pathname[pathname.length - 1];
-  const productName = searchParams.get('productName') || '';
-
-  pathname.splice(4, 1, productName);
-
-  const capitalizedPathname = capitalizeString(
-    pathname.join(' / ').substring(3)
-  );
+  let productId = pathname[pathname.length - 1];
+  pathname.pop();
 
   useEffect(() => {
     const getSanityData = async () => {
@@ -57,24 +50,25 @@ const ProductFocused: React.FC = () => {
     getSanityData();
   }, []);
 
-  useEffect(() => {
-    if (!sanityProduct) return;
-    setCurrentImage(img);
-  }, []);
+  const img = useMemo(() => {
+    if (!sanityProduct) return '';
+    return urlForImage(sanityProduct[0].image[0]).width(1000).url();
+  }, [sanityProduct]);
+
+  const capitalizedPathname = useMemo(() => {
+    if (!sanityProduct) return '';
+    pathname.push(sanityProduct[0].name);
+    return capitalizeString(pathname.join(' / ')).substring(3);
+  }, [pathname, sanityProduct]);
 
   if (!sanityProduct) {
     return <Loading />;
   }
 
-  const img = urlForImage(sanityProduct[0].image[0]).width(1000).url();
-
   return (
     <>
       <AlertBanner
-        text={[
-          'Products are not purchasable',
-          'This is only a portfolio project',
-        ]}
+        text={['Products are not purchasable', 'This is a mock website']}
         Icon={Warning}
       />
       <section>
@@ -156,7 +150,7 @@ const ProductFocused: React.FC = () => {
 
                       return (
                         <div
-                          key={index}
+                          key={`${sanityProduct[0]._id}-${index}`}
                           className={`flex relative rounded-xl ${
                             index % 3 == 0 && index === currentIndex
                               ? 'bg-blue'

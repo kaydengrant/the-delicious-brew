@@ -43,7 +43,7 @@ const SimilarProducts: React.FC<Props> = ({ category }) => {
             return (
               <Link
                 key={item._id}
-                href={`/shop/products/${category}/${item._id}?productName=${item.name}`}
+                href={`/shop/products/${category}/${item._id}`}
                 className="flex flex-col gap-2 max-w-[200px] mx-2"
               >
                 <div
