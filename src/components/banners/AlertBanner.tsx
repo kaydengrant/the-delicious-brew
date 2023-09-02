@@ -16,9 +16,9 @@ const AlertBanner: React.FC<Props> = ({ text, Icon }) => {
           autoFill
           className="absolute left-0 right-0 flex flex-row h-10 bg-gray drop-shadow-md"
         >
-          {text.map((item) => (
+          {text.map((item, index) => (
             <div
-              key={0}
+              key={`${item}-${index}`}
               className="flex flex-row items-center gap-x-10 mx-5 text-white drop-shadow-lg"
             >
               <h4>{item}</h4>
