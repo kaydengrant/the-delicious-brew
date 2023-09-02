@@ -6,8 +6,6 @@ An e-commerce and blog mock website about one of my personal hobbies: brewing co
 
 ## Getting Started
 
-Or
-
 First, install dependencies:
 
 ```bash
