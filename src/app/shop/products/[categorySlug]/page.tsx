@@ -157,7 +157,6 @@ const Products: React.FC = () => {
                           src={img}
                           alt="Product image"
                           className="drop-shadow-xl object-contain"
-                          loading="lazy"
                           fill
                           unoptimized
                         />

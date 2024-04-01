@@ -126,7 +126,6 @@ const ProductFocused: React.FC = () => {
                       src={currentImage}
                       alt="Product focused image"
                       className="drop-shadow-xl object-cover rounded-xl"
-                      loading="lazy"
                       fill
                       unoptimized
                     />
@@ -137,7 +136,6 @@ const ProductFocused: React.FC = () => {
                       src={img}
                       alt="Product focused image"
                       className="drop-shadow-xl object-cover rounded-xl"
-                      loading="lazy"
                       fill
                       unoptimized
                     />
@@ -176,7 +174,6 @@ const ProductFocused: React.FC = () => {
                             src={imgPreview}
                             alt="Product focused image"
                             className="drop-shadow-sm object-cover rounded-xl"
-                            loading="lazy"
                             fill
                             unoptimized
                           />

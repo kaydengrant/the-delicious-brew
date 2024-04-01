@@ -41,7 +41,6 @@ const CartItem: React.FC<Props> = ({ data, index, quantity }) => {
           src={img}
           alt="Product banner image"
           className="drop-shadow-xl object-contain"
-          loading="lazy"
           fill
           unoptimized
         />

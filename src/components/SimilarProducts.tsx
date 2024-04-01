@@ -60,7 +60,6 @@ const SimilarProducts: React.FC<Props> = ({ category }) => {
                     src={img}
                     alt="Product banner image"
                     className="drop-shadow-xl object-contain"
-                    loading="lazy"
                     fill
                     unoptimized
                   />

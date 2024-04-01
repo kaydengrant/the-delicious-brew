@@ -102,7 +102,6 @@ const ProductBanner: React.FC<Props> = ({
           src={img}
           alt="Product banner image"
           className="drop-shadow-xl object-contain p-2"
-          loading="lazy"
           fill
           unoptimized
         />

@@ -33,7 +33,6 @@ const VerticalBanner: React.FC<Props> = ({ data }) => {
           src={img}
           alt="Vertical banner image"
           className="drop-shadow-xl rounded-b-xl object-cover"
-          loading="lazy"
           fill
           unoptimized
         />
